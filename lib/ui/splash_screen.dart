@@ -15,7 +15,6 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    _checkForUpdate();
   }
 
   void _initData() async {
@@ -27,10 +26,6 @@ class _SplashScreenState extends State<SplashScreen> {
 //          : Navigator.of(context).pushReplacement(
 //              MaterialPageRoute(builder: (context) => MainScreen()));
     });
-  }
-
-  void _checkForUpdate() async {
-    _initData();
   }
 
   @override
