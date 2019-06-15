@@ -1,16 +1,88 @@
-# noah_ark
+# Noah Ark's
 
-Rami&#x27;s new app
+#### Information about this project:
 
-## Getting Started
+**Noah Ark's** - Just Noah Ark's - One of [CollectClick](http://collectclick.com). Applications
 
-This project is a starting point for a Flutter application.
+**Application Category**:  Utilities.
 
-A few resources to get you started if this is your first Flutter project:
+**Support Email**: [supports@collectclick.com](mailto:supports@collectclick.com).
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+#### Developers worked on this:
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+**Saifallak** [Contact](https://api.whatsapp.com/send?phone=0201129261195) / [Contact](http://tinyprogrammers.ga).
+
+**eslamira** [Contact](https://api.whatsapp.com/send?phone=0201144753259) / [Contact](http://tinyprogrammers.ga).
+
+**ramisadek** [Contact](https://api.whatsapp.com/send?phone=0201276066274) / [Contact](http://tinyprogrammers.ga).
+
+#### Application runs on:
+
+Android: api16+ (Kitkat 4.4+).
+
+IOS: 9.0+.
+
+Fuchsia: none.
+
+Desktop: none.
+
+Web: none.
+
+#### Developing environment:
+
+Developed with Flutter on Dev Branch (1.5.8+).
+
+Dart SDK Dev Branch (2.3.0+).
+
+supporting AndroidX Libraries (merged to androidX).
+
+
+#### Release Certificates Fingerprints:
+
+MD5: (##Missing).
+
+SHA1: (##Missing).
+
+SHA256: (##Missing).
+
+#### Upload Certificates Fingerprints:
+
+MD5: (##Missing).
+
+SHA1: (##Missing).
+
+SHA256: (##Missing).
+
+#### AdMob:
+
+appId: (##Missing).
+
+Interstitial : (##Missing).
+
+Banner : (##Missing).
+
+Reward : (##Missing).
+
+#### Links:
+
+[Noah Ark's Website](https://collectclick.com).
+
+[App Icon](https://github.com/Saifallak/prova/blob/master/assets/images/logo.png).
+
+[Terms and Conditions](https://collectclick.com/enTerms).
+
+[Privacy Policy] (##Missing).
+
+[Internal Test Play Store Link] (##Missing).
+
+[Play Store Link (Production)] (##Missing).
+
+[Play Store Console](https://play.google.com/apps/publish/?account=4694925721573390895).
+
+[App Store Link (Production)] (##Missing).
+
+#### See Also
+
+[Noah Ark's Admin] (##Missing).
+
+[Noah Ark's Cli] (##Missing).
