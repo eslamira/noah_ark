@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "549052063000",
+    "firebase_url": "https://noah-s-ark.firebaseio.com",
+    "project_id": "noah-s-ark",
+    "storage_bucket": "noah-s-ark.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:549052063000:android:1f0e40cb7d019591",
+        "android_client_info": {
+          "package_name": "com.collectclick.noah_ark"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "549052063000-nm6ecq7667f6uc7ls735a0pcgqak5pcl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.collectclick.noah_ark",
+            "certificate_hash": "f318159c24d3be8e5dd898b56b988ae449909a26"
+          }
+        },
+        {
+          "client_id": "549052063000-pm3c62r01bctghgmfn74alifun6e77g9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCaPM15xv02CKKtHTX0e-BGmdNiMQTOrh8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "549052063000-pm3c62r01bctghgmfn74alifun6e77g9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
