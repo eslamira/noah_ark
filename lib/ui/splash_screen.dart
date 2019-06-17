@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:noah_ark/ui/auth/main_auth.dart';
 import 'package:noah_ark/utils/auth_client.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -15,16 +16,17 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
+    _initData();
   }
 
   void _initData() async {
     var loggedIn = await _auth.isLoggedIn();
     Timer(Duration(seconds: 5), () {
-//      loggedIn == null
-//          ? Navigator.of(context).pushReplacement(
-//              MaterialPageRoute(builder: (context) => AuthScreen()))
-//          : Navigator.of(context).pushReplacement(
-//              MaterialPageRoute(builder: (context) => MainScreen()));
+      loggedIn == null
+          ? Navigator.of(context).pushReplacement(
+              MaterialPageRoute(builder: (context) => MainScreenAuth()))
+          : Navigator.of(context).pushReplacement(
+              MaterialPageRoute(builder: (context) => MainScreenAuth()));
     });
   }
 
