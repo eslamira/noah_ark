@@ -14,9 +14,9 @@ class NoahTheme {
         fontFamily: "Ariel",
       ),
       subtitle: TextStyle(
-        color: Colors.black,
-        fontSize: 14,
-        fontFamily: "Ariel",
+        fontFamily: 'Sitka',
+        fontWeight: FontWeight.bold,
+        fontSize: 10,
       ),
       subhead: TextStyle(
         color: Colors.white,
@@ -92,8 +92,8 @@ class NoahTheme {
 
     // --- Theming App Bars --- //
     appBarTheme: AppBarTheme(
-      color: Colors.black, // background color for app bar
-      brightness: Brightness.dark, // this controls the status bar text color
+      color: Color(0xFFFFE200),
+      brightness: Brightness.light, // this controls the status bar text color
 
       // --- Theming Texts in Appbar ex: Title --- //
       textTheme: TextTheme(
