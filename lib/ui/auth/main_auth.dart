@@ -4,6 +4,7 @@ import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:noah_ark/ui/auth/login.dart';
+import 'package:noah_ark/ui/auth/reg/register_screens.dart';
 import 'package:noah_ark/ui/welcome_screens/terms_privacy.dart';
 import 'package:noah_ark/utils/database_client.dart';
 
@@ -231,12 +232,9 @@ class _MainScreenAuthState extends State<MainScreenAuth> {
           controller: _tabController,
           children: [
             Login(),
-            Container(),
+            RegisterScreens(),
             Container(),
             TermsAndPrivacy(),
-//            RegisterRefScreen(),
-//            RestoreAccountScreen(),
-//            LicensesOfUse(),
           ],
         ),
       ),

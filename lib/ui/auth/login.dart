@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:noah_ark/ui/common/common.dart';
 import 'package:noah_ark/ui/widgets/noah_container.dart';
@@ -98,8 +97,8 @@ class _LoginState extends State<Login> {
           maxHeight: MediaQuery.of(context).size.width * 0.12,
           backgroundColor: (_numController.text.length > 1 &&
                   _passController.text.length > 1)
-              ? Colors.grey[800]
-              : Color(0xFFcb3b3b),
+              ? Color(0xFFcb3b3b)
+              : Colors.grey[800],
           text: 'دخول',
           fontWeight: FontWeight.bold,
         ),

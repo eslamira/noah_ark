@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:noah_ark/ui/widgets/noah_container.dart';
 import 'package:noah_ark/ui/widgets/noah_scaffold.dart';
 
-class RegPassword extends StatefulWidget {
+class PasswordScreen extends StatefulWidget {
   @override
-  _RegPasswordState createState() => _RegPasswordState();
+  _PasswordScreenState createState() => _PasswordScreenState();
 }
 
-class _RegPasswordState extends State<RegPassword> {
+class _PasswordScreenState extends State<PasswordScreen> {
   String _error;
 
   @override
