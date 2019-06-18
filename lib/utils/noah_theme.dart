@@ -21,7 +21,10 @@ class NoahTheme {
         fontWeight: FontWeight.bold,
       ),
       subhead: TextStyle(
-        color: Colors.white,
+        color: Colors.black,
+        fontSize: 10,
+        fontFamily: "Hacen",
+        fontWeight: FontWeight.bold,
       ),
       button: TextStyle(
         color: Colors.white,

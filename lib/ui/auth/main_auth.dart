@@ -130,11 +130,8 @@ class _MainScreenAuthState extends State<MainScreenAuth> {
                                     fit: BoxFit.scaleDown,
                                     child: Text(
                                       "تسجيل الدخول",
-                                      style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 9,
-                                        fontFamily: 'Hacen',
-                                      ),
+                                      style:
+                                          Theme.of(context).textTheme.subhead,
                                     ),
                                   ),
                                 )),
@@ -159,11 +156,8 @@ class _MainScreenAuthState extends State<MainScreenAuth> {
                                     fit: BoxFit.scaleDown,
                                     child: Text(
                                       "فتح حساب",
-                                      style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 9,
-                                        fontFamily: 'Hacen',
-                                      ),
+                                      style:
+                                          Theme.of(context).textTheme.subhead,
                                     ),
                                   ),
                                 )),
@@ -188,11 +182,8 @@ class _MainScreenAuthState extends State<MainScreenAuth> {
                                     fit: BoxFit.scaleDown,
                                     child: Text(
                                       "إستعادة الحساب",
-                                      style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 8,
-                                        fontFamily: 'Hacen',
-                                      ),
+                                      style:
+                                          Theme.of(context).textTheme.subhead,
                                     ),
                                   ),
                                 )),
@@ -217,11 +208,8 @@ class _MainScreenAuthState extends State<MainScreenAuth> {
                                     fit: BoxFit.scaleDown,
                                     child: Text(
                                       "إتفاقية الإستخدام",
-                                      style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 7,
-                                        fontFamily: 'Hacen',
-                                      ),
+                                      style:
+                                          Theme.of(context).textTheme.subhead,
                                     ),
                                   ),
                                 )),
