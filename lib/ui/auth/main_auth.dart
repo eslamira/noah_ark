@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 class MainScreenAuth extends StatefulWidget {
@@ -16,13 +18,12 @@ class _MainScreenAuthState extends State<MainScreenAuth> {
               Icons.power_settings_new,
               color: Colors.black,
             ),
-            onPressed: null),
+            onPressed: () => exit(0)),
         title: Align(
           alignment: Alignment.centerLeft,
           child: Text(
             'THE ARK',
             textScaleFactor: 1.0,
-            textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.title,
           ),
         ),
