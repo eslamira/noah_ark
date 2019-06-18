@@ -94,8 +94,8 @@ class NoahTheme {
 
     // --- Theming App Bars --- //
     appBarTheme: AppBarTheme(
-      color: Colors.black, // background color for app bar
-      brightness: Brightness.dark, // this controls the status bar text color
+      color: Color(0xFFFFE200),
+      brightness: Brightness.light, // this controls the status bar text color
 
       // --- Theming Texts in Appbar ex: Title --- //
       textTheme: TextTheme(
