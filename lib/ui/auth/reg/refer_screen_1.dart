@@ -50,7 +50,7 @@ class _ReferScreenState extends State<ReferScreen> {
           maxHeight: MediaQuery.of(context).size.width * 0.12,
           backgroundColor: (_numController.text.length > 1)
               ? Color(0xFFcb3b3b)
-              :Colors.grey[800],
+              : Colors.grey[800],
           text: 'دخول',
           fontWeight: FontWeight.bold,
         ),
