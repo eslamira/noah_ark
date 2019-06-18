@@ -29,14 +29,11 @@ class NoahTheme {
       button: TextStyle(
         color: Colors.white,
       ),
-
-      // this will be for Items Card font
       display1: TextStyle(
-        // Item Name
-        color: Colors.black,
-        fontSize: 16,
-        fontFamily: "NeusaNextPro",
-        fontWeight: FontWeight.w300,
+        color: Colors.white,
+        fontSize: 14,
+        fontFamily: "Hacen",
+        fontWeight: FontWeight.bold,
       ),
       overline: TextStyle(
         // Item Name
