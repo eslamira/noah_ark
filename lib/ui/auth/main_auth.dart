@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:noah_ark/ui/auth/login.dart';
 import 'package:noah_ark/utils/database_client.dart';
 
 class MainScreenAuth extends StatefulWidget {
@@ -228,11 +229,10 @@ class _MainScreenAuthState extends State<MainScreenAuth> {
         body: TabBarView(
           controller: _tabController,
           children: [
+            Login(),
             Container(),
             Container(),
             Container(),
-            Container(),
-//            LoginTab(),
 //            RegisterRefScreen(),
 //            RestoreAccountScreen(),
 //            LicensesOfUse(),
