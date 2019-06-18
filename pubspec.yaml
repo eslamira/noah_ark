@@ -1,37 +1,37 @@
 name: noah_ark
-description: Rami&#x27;s new app
-version: 1.0.0+1
+description: Noah's Ark Application
+version: 0.0.1+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.2.2 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-
+  flutter_localizations:
+    sdk: flutter
   cupertino_icons: ^0.1.2
   firebase_core: ^0.4.0+5
   firebase_database: ^3.0.2
   firebase_auth: ^0.11.1+6
 
-# For information on the generic Dart part of this file, see the
-# following page: https://www.dartlang.org/tools/pub/pubspec
-
-# The following section is specific to Flutter.
 flutter:
-
-  # The following line ensures that the Material Icons font is
-  # included with your application, so that you can use the icons in
-  # the material Icons class.
   uses-material-design: true
   assets:
+    - assets/ads/
     - assets/images/
-#  fonts:
-#    - family: Montserrat
-#      fonts:
-#        - asset: assets/fonts/Montserrat-Regular.otf
-#        - asset: assets/fonts/Montserrat-Bold.otf
-#          weight: 700
-#        - asset: assets/fonts/Montserrat-SemiBold.otf
-#          weight: 300
+    - assets/icons/
 
+  fonts:
+    - family: ElMessiri
+      fonts:
+        - asset: assets/fonts/ElMessiri-Bold.ttf
+    - family: Sitka
+      fonts:
+        - asset: assets/fonts/Sitka.ttc
+    - family: Hacen
+      fonts:
+        - asset: assets/fonts/Hacen_Saudi_Arabia.ttf
+    - family: Arial
+      fonts:
+        - asset: assets/fonts/Arial Narrow.ttf
