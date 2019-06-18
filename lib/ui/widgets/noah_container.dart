@@ -7,8 +7,10 @@ class NoahContainer extends StatelessWidget {
   final double height;
   final double fontSize;
   final String text;
+  final String fontFamily;
   final Color backgroundColor;
   final Color textColor;
+  final FontWeight fontWeight;
 
   const NoahContainer({
     Key key,
@@ -20,6 +22,8 @@ class NoahContainer extends StatelessWidget {
     this.backgroundColor,
     this.textColor,
     this.fontSize,
+    this.fontFamily,
+    this.fontWeight,
   }) : super(key: key);
 
   @override
@@ -44,8 +48,9 @@ class NoahContainer extends StatelessWidget {
             textScaleFactor: 1.0,
             style: TextStyle(
               color: textColor ?? Colors.white,
-              fontWeight: FontWeight.bold,
-              fontSize: fontSize,
+              fontWeight: fontWeight ?? FontWeight.normal,
+              fontSize: fontSize ?? 14,
+              fontFamily: fontFamily ?? "Hacen",
             ),
           ),
         ),
