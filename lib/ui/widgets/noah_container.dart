@@ -36,14 +36,17 @@ class NoahContainer extends StatelessWidget {
     // Child Widget, might be text or child and most common to be child;
     Widget childWidget = child != null
         ? child
-        : Text(
-            "$text",
-            textScaleFactor: 1.0,
-            style: TextStyle(
-              color: textColor ?? Colors.white,
-              fontWeight: fontWeight ?? FontWeight.normal,
-              fontSize: fontSize ?? 14,
-              fontFamily: fontFamily ?? "Hacen",
+        : FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Text(
+              "$text",
+              textScaleFactor: 1.0,
+              style: TextStyle(
+                color: textColor ?? Colors.white,
+                fontWeight: fontWeight ?? FontWeight.normal,
+                fontSize: fontSize ?? 14,
+                fontFamily: fontFamily ?? "Hacen",
+              ),
             ),
           );
 
@@ -61,10 +64,7 @@ class NoahContainer extends StatelessWidget {
           ),
         ),
         alignment: Alignment.center,
-        child: FittedBox(
-          fit: BoxFit.scaleDown,
-          child: childWidget,
-        ),
+        child: childWidget,
       ),
     );
 
