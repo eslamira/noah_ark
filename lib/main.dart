@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:noah_ark/ui/main_screen.dart';
 import 'package:noah_ark/ui/splash_screen.dart';
 import 'package:noah_ark/utils/noah_theme.dart';
 
@@ -17,6 +18,9 @@ class MyApp extends StatelessWidget {
       },
       theme: NoahTheme().dark,
       home: SplashScreen(),
+      routes: <String, WidgetBuilder>{
+        '/home': (BuildContext context) => MainScreen(),
+      },
     );
   }
 }

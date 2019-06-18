@@ -20,6 +20,7 @@ class _LoginState extends State<Login> {
           '${_numController.text}${Common.internal().dummyDomain}',
           _passController.text);
       Navigator.of(context).pop();
+      Navigator.of(context).pushNamedAndRemoveUntil('/home', (route) => false);
     } catch (e) {
       Navigator.of(context).pop();
       setState(() {
