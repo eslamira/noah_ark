@@ -34,21 +34,25 @@ class NoahContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Child Widget, might be text or child and most common to be child;
-    Widget childWidget = child != null
-        ? child
-        : FittedBox(
-            fit: BoxFit.scaleDown,
-            child: Text(
-              "$text",
-              textScaleFactor: 1.0,
-              style: TextStyle(
-                color: textColor ?? Colors.white,
-                fontWeight: fontWeight ?? FontWeight.normal,
-                fontSize: fontSize ?? 14,
-                fontFamily: fontFamily ?? "Hacen",
-              ),
-            ),
-          );
+    Widget childWidget;
+
+    if (child != null) {
+      childWidget = child;
+    } else {
+      childWidget = FittedBox(
+        fit: BoxFit.scaleDown,
+        child: Text(
+          "$text",
+          textScaleFactor: 1.0,
+          style: TextStyle(
+            color: textColor ?? Colors.white,
+            fontWeight: fontWeight ?? FontWeight.normal,
+            fontSize: fontSize ?? 14,
+            fontFamily: fontFamily ?? "Hacen",
+          ),
+        ),
+      );
+    }
 
     // Our Widget
     Widget finalWidget = SizedBox(
