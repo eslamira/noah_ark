@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:noah_ark/ui/auth/login.dart';
 import 'package:noah_ark/ui/auth/reg/register_screens.dart';
+import 'package:noah_ark/ui/welcome_screens/restore_acc.dart';
 import 'package:noah_ark/ui/welcome_screens/terms_privacy.dart';
 import 'package:noah_ark/utils/database_client.dart';
 
@@ -233,7 +234,7 @@ class _MainScreenAuthState extends State<MainScreenAuth> {
           children: [
             Login(),
             RegisterScreens(),
-            Container(),
+            RestoreAccountScreen(),
             TermsAndPrivacy(),
           ],
         ),

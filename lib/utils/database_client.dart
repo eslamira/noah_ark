@@ -10,13 +10,11 @@ class DatabaseClient {
 
   factory DatabaseClient() => _instance;
 
-  Future<String> getUserLic() async {
-    String lic;
-    DatabaseReference ref = _db.reference().child('config/useLic');
-    await ref.once().then((d) {
-      lic = d.value.toString() ?? "Failed to get Use Lic";
+  Future<Map<dynamic, dynamic>> getUserLic() async {
+    DatabaseReference ref = _db.reference().child('config/lic');
+    return await ref.once().then((d) {
+      return d.value;
     });
-    return lic;
   }
 
   /// Retrieves [restoreAccount] from DB / Config
