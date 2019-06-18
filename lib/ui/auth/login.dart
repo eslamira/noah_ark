@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:noah_ark/ui/common/common.dart';
 import 'package:noah_ark/ui/widgets/noah_container.dart';
@@ -21,10 +22,14 @@ class _LoginState extends State<Login> {
           _passController.text);
       Navigator.of(context).pop();
       Navigator.of(context).pushNamedAndRemoveUntil('/home', (route) => false);
+    } on SocketException {
+      setState(() {
+        _error = 'تأكد من الأتصال بالشبكه وحاول مرة أخرى';
+      });
     } catch (e) {
       Navigator.of(context).pop();
       setState(() {
-        _error = e.toString();
+        _error = 'اﻟﺒﻴﺎﻧﺎت اﻟﻤﺪﺧﻠﺔ ﻏﻴﺮ ﺻﺤﻴﺤﺔ';
       });
     }
   }
