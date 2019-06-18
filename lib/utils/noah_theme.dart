@@ -7,6 +7,15 @@ class NoahTheme {
     unselectedWidgetColor: Colors.black45,
     scaffoldBackgroundColor: Colors.black,
     indicatorColor: Colors.black,
+    dialogBackgroundColor: Colors.grey,
+    canvasColor: Colors.grey,
+//    dialogTheme: DialogTheme(
+//      shape: RoundedRectangleBorder(
+//        borderRadius: BorderRadius.all(
+//          Radius.circular(10.0),
+//        ),
+//      ),
+//    ),
     textTheme: TextTheme(
       title: TextStyle(
         color: Colors.black,
