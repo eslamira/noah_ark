@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:noah_ark/ui/widgets/noah_container.dart';
 
 class NumberScreen extends StatefulWidget {
+  final PageController pageController;
+  NumberScreen({this.pageController});
   @override
   _NumberScreenState createState() => _NumberScreenState();
 }
@@ -10,7 +12,10 @@ class _NumberScreenState extends State<NumberScreen> {
   final TextEditingController _numController = TextEditingController();
   String _error = ' ';
 
-  _validateAndNext() async {}
+  _validateAndNext() async {
+    widget.pageController
+        .nextPage(duration: Duration(milliseconds: 300), curve: Curves.ease);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +38,9 @@ class _NumberScreenState extends State<NumberScreen> {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextField(
+                  onChanged: (v) {
+                    setState(() {});
+                  },
                   controller: _numController,
                   keyboardType: TextInputType.number,
                   style: Theme.of(context).textTheme.display1,

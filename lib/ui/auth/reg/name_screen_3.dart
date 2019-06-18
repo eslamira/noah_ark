@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:noah_ark/ui/widgets/noah_container.dart';
 
 class NameScreen extends StatefulWidget {
+  final PageController pageController;
+  NameScreen({this.pageController});
   @override
   _NameScreenState createState() => _NameScreenState();
 }
@@ -13,7 +15,10 @@ class _NameScreenState extends State<NameScreen> {
   final TextEditingController _foNameController = TextEditingController();
   String _error = ' ';
 
-  _validateAndNext() async {}
+  _validateAndNext() async {
+    widget.pageController
+        .nextPage(duration: Duration(milliseconds: 300), curve: Curves.ease);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +50,9 @@ class _NameScreenState extends State<NameScreen> {
                     padding: const EdgeInsets.all(8.0),
                     child: TextField(
                       controller: _fNameController,
+                      onChanged: (v) {
+                        setState(() {});
+                      },
                       keyboardType: TextInputType.number,
                       style: Theme.of(context).textTheme.display1,
                     ),
@@ -59,6 +67,9 @@ class _NameScreenState extends State<NameScreen> {
                     padding: const EdgeInsets.all(8.0),
                     child: TextField(
                       controller: _sNameController,
+                      onChanged: (v) {
+                        setState(() {});
+                      },
                       keyboardType: TextInputType.number,
                       style: Theme.of(context).textTheme.display1,
                     ),
@@ -73,6 +84,9 @@ class _NameScreenState extends State<NameScreen> {
                     padding: const EdgeInsets.all(8.0),
                     child: TextField(
                       controller: _tNameController,
+                      onChanged: (v) {
+                        setState(() {});
+                      },
                       keyboardType: TextInputType.number,
                       style: Theme.of(context).textTheme.display1,
                     ),
@@ -87,6 +101,9 @@ class _NameScreenState extends State<NameScreen> {
                     padding: const EdgeInsets.all(8.0),
                     child: TextField(
                       controller: _foNameController,
+                      onChanged: (v) {
+                        setState(() {});
+                      },
                       keyboardType: TextInputType.number,
                       style: Theme.of(context).textTheme.display1,
                     ),

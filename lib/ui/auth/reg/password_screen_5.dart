@@ -2,12 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:noah_ark/ui/widgets/noah_container.dart';
 
 class PasswordScreen extends StatefulWidget {
+  final PageController pageController;
+  PasswordScreen({this.pageController});
   @override
   _PasswordScreenState createState() => _PasswordScreenState();
 }
 
 class _PasswordScreenState extends State<PasswordScreen> {
   String _error;
+
+  _validateAndNext() async {
+    widget.pageController
+        .nextPage(duration: Duration(milliseconds: 300), curve: Curves.ease);
+  }
 
   @override
   Widget build(BuildContext context) {

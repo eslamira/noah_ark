@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:noah_ark/ui/widgets/noah_container.dart';
 
 class ReferScreen extends StatefulWidget {
+  final PageController pageController;
+  ReferScreen({this.pageController});
   @override
   _ReferScreenState createState() => _ReferScreenState();
 }
@@ -10,7 +12,10 @@ class _ReferScreenState extends State<ReferScreen> {
   final TextEditingController _numController = TextEditingController();
   String _error = ' ';
 
-  _validateAndNext() async {}
+  _validateAndNext() async {
+    widget.pageController
+        .nextPage(duration: Duration(milliseconds: 300), curve: Curves.ease);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +38,9 @@ class _ReferScreenState extends State<ReferScreen> {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextField(
+                  onChanged: (v) {
+                    setState(() {});
+                  },
                   controller: _numController,
                   keyboardType: TextInputType.number,
                   style: Theme.of(context).textTheme.display1,

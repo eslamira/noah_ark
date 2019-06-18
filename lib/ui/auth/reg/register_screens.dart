@@ -28,11 +28,10 @@ class _RegisterScreensState extends State<RegisterScreens> {
       controller: _controller,
       physics: NeverScrollableScrollPhysics(),
       children: <Widget>[
-        NameScreen(),
-        ReferScreen(),
-        NumberScreen(),
-        ReferScreen(),
-        PasswordScreen(),
+        ReferScreen(pageController: _controller),
+        NumberScreen(pageController: _controller),
+        NameScreen(pageController: _controller),
+        PasswordScreen(pageController: _controller),
       ],
     );
   }
