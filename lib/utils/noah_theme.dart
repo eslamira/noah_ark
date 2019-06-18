@@ -9,15 +9,12 @@ class NoahTheme {
     indicatorColor: Colors.white,
     textTheme: TextTheme(
       title: TextStyle(
-        color: Colors.white,
-        fontSize: 40,
-        fontFamily: "Montserrat",
-        fontWeight: FontWeight.w300,
+        color: Colors.black,
+        fontSize: 22,
       ),
       subtitle: TextStyle(
-        color: Colors.white,
+        color: Colors.black,
         fontSize: 16,
-        fontFamily: "Montserrat",
       ),
       subhead: TextStyle(
         color: Colors.white,
