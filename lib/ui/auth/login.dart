@@ -92,8 +92,8 @@ class _LoginState extends State<Login> {
         NoahContainer(
           onTap: (_numController.text.length > 1 &&
                   _passController.text.length > 1)
-              ? null
-              : () => _login(),
+              ? () => _login()
+              : null,
           maxWidth: MediaQuery.of(context).size.width * 0.9,
           maxHeight: MediaQuery.of(context).size.width * 0.12,
           backgroundColor: (_numController.text.length > 1 &&

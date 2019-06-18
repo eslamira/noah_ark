@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:noah_ark/ui/widgets/noah_container.dart';
 
-class ReferScreen extends StatefulWidget {
+class NumberScreen extends StatefulWidget {
   final PageController pageController;
-  ReferScreen({this.pageController});
+  NumberScreen({this.pageController});
   @override
-  _ReferScreenState createState() => _ReferScreenState();
+  _NumberScreenState createState() => _NumberScreenState();
 }
 
-class _ReferScreenState extends State<ReferScreen> {
+class _NumberScreenState extends State<NumberScreen> {
   final TextEditingController _numController = TextEditingController();
   String _error = ' ';
 
@@ -28,7 +28,7 @@ class _ReferScreenState extends State<ReferScreen> {
             NoahContainer(
               maxWidth: MediaQuery.of(context).size.width * 0.45,
               maxHeight: MediaQuery.of(context).size.width * 0.12,
-              text: 'كود الأحالة',
+              text: 'رقم الجوال',
               fontWeight: FontWeight.bold,
             ),
             NoahContainer(
