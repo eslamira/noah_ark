@@ -74,8 +74,9 @@ class _MainScreenAuthState extends State<MainScreenAuth> {
             SliverAppBar(
               pinned: true,
               floating: true,
+              snap: true,
               forceElevated: boxIsScrolled,
-              backgroundColor: Colors.white,
+              backgroundColor: Color(0xFFFFE200),
               expandedHeight: MediaQuery.of(context).size.height * 0.33,
               flexibleSpace: FlexibleSpaceBar(
                 background: Container(
@@ -102,7 +103,8 @@ class _MainScreenAuthState extends State<MainScreenAuth> {
                 ),
               ),
               bottom: PreferredSize(
-                preferredSize: Size(0, 0),
+                preferredSize: Size(0, 40),
+                // 8 padding + 24 height = 32 + 8 bonus
                 child: Container(
                   color: Color(0xFFFFE200),
                   child: TabBar(
