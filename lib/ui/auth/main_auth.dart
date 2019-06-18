@@ -76,44 +76,29 @@ class _MainScreenAuthState extends State<MainScreenAuth> {
               floating: true,
               forceElevated: boxIsScrolled,
               backgroundColor: Colors.white,
-              expandedHeight: MediaQuery.of(context).size.height * 0.3,
+              expandedHeight: MediaQuery.of(context).size.height * 0.33,
               flexibleSpace: FlexibleSpaceBar(
-                background: SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.3,
-                  width: MediaQuery.of(context).size.width,
-                  child: FittedBox(
-                    fit: BoxFit.cover,
-                    child: Column(
-                      children: <Widget>[
-                        Column(
-                          children: <Widget>[
-                            Container(
-                              margin: EdgeInsets.only(top: 4),
-                              height: size.height * 0.3,
-                              width: size.width,
-                              child: _adsList.isEmpty
-                                  ? Container(
-                                      decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                          image: AssetImage('assets/ads/1.png'),
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ),
-                                    )
-                                  : Carousel(
-                                      images: _adsList,
-                                      autoplay: _autoPlaySlider,
-                                      dotSize: 0,
-                                      autoplayDuration: _sliderDuration,
-                                      boxFit: BoxFit.fill,
-                                      showIndicator: false,
-                                    ),
+                background: Container(
+                  margin: EdgeInsets.only(top: 3),
+                  height: size.height * 0.3,
+                  width: size.width,
+                  child: _adsList.isEmpty
+                      ? Container(
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage('assets/ads/1.png'),
+                              fit: BoxFit.cover,
                             ),
-                          ],
+                          ),
+                        )
+                      : Carousel(
+                          images: _adsList,
+                          autoplay: _autoPlaySlider,
+                          dotSize: 0,
+                          autoplayDuration: _sliderDuration,
+                          boxFit: BoxFit.fill,
+                          showIndicator: false,
                         ),
-                      ],
-                    ),
-                  ),
                 ),
               ),
               bottom: PreferredSize(
@@ -128,6 +113,9 @@ class _MainScreenAuthState extends State<MainScreenAuth> {
                       Container(
                         child: Column(
                           children: <Widget>[
+                            Padding(
+                              padding: EdgeInsets.only(top: 8),
+                            ),
                             Icon(
                               FontAwesomeIcons.lock,
                             ),
@@ -156,6 +144,9 @@ class _MainScreenAuthState extends State<MainScreenAuth> {
                       Container(
                         child: Column(
                           children: <Widget>[
+                            Padding(
+                              padding: EdgeInsets.only(top: 8),
+                            ),
                             Icon(FontAwesomeIcons.userPlus),
                             Padding(
                                 padding: EdgeInsets.only(top: 5, right: 16),
@@ -182,6 +173,9 @@ class _MainScreenAuthState extends State<MainScreenAuth> {
                       Container(
                         child: Column(
                           children: <Widget>[
+                            Padding(
+                              padding: EdgeInsets.only(top: 8),
+                            ),
                             Icon(FontAwesomeIcons.key),
                             Padding(
                                 padding: EdgeInsets.only(top: 5),
@@ -208,6 +202,9 @@ class _MainScreenAuthState extends State<MainScreenAuth> {
                       Container(
                         child: Column(
                           children: <Widget>[
+                            Padding(
+                              padding: EdgeInsets.only(top: 8),
+                            ),
                             Icon(FontAwesomeIcons.newspaper),
                             Padding(
                                 padding: EdgeInsets.only(top: 5),
