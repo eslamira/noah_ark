@@ -7,10 +7,12 @@ class NoahContainer extends StatelessWidget {
   final double height;
   final double fontSize;
   final String text;
+  final Widget child;
   final String fontFamily;
   final Color backgroundColor;
   final Color textColor;
   final FontWeight fontWeight;
+  final VoidCallback onTap;
 
   const NoahContainer({
     Key key,
@@ -24,11 +26,29 @@ class NoahContainer extends StatelessWidget {
     this.fontSize,
     this.fontFamily,
     this.fontWeight,
-  }) : super(key: key);
+    this.child,
+    this.onTap,
+  })  : assert(child != null || text != null),
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    // Child Widget, might be text or child and most common to be child;
+    Widget childWidget = child != null
+        ? child
+        : Text(
+            "$text",
+            textScaleFactor: 1.0,
+            style: TextStyle(
+              color: textColor ?? Colors.white,
+              fontWeight: fontWeight ?? FontWeight.normal,
+              fontSize: fontSize ?? 14,
+              fontFamily: fontFamily ?? "Hacen",
+            ),
+          );
+
+    // Our Widget
+    Widget finalWidget = SizedBox(
       width: maxWidth ?? MediaQuery.of(context).size.width * 0.25,
       height: maxHeight ?? MediaQuery.of(context).size.height * 0.06,
       child: Container(
@@ -43,18 +63,19 @@ class NoahContainer extends StatelessWidget {
         alignment: Alignment.center,
         child: FittedBox(
           fit: BoxFit.scaleDown,
-          child: Text(
-            "$text",
-            textScaleFactor: 1.0,
-            style: TextStyle(
-              color: textColor ?? Colors.white,
-              fontWeight: fontWeight ?? FontWeight.normal,
-              fontSize: fontSize ?? 14,
-              fontFamily: fontFamily ?? "Hacen",
-            ),
-          ),
+          child: childWidget,
         ),
       ),
     );
+
+    // adding Tab Feature
+    if (onTap != null) {
+      finalWidget = InkWell(
+        onTap: onTap,
+        child: finalWidget,
+      );
+    }
+
+    return finalWidget;
   }
 }
