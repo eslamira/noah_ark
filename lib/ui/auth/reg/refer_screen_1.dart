@@ -23,7 +23,7 @@ class _ReferScreenState extends State<ReferScreen> {
             NoahContainer(
               maxWidth: MediaQuery.of(context).size.width * 0.45,
               maxHeight: MediaQuery.of(context).size.width * 0.12,
-              text: 'رقم الحساب',
+              text: 'كود الأحالة',
               fontWeight: FontWeight.bold,
             ),
             NoahContainer(
