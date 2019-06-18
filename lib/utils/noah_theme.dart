@@ -4,19 +4,21 @@ class NoahTheme {
   ThemeData dark = ThemeData(
     primaryColor: Colors.black,
     accentColor: Colors.black54,
-    unselectedWidgetColor: Colors.black54,
+    unselectedWidgetColor: Colors.black45,
     scaffoldBackgroundColor: Colors.black,
-    indicatorColor: Colors.white,
+    indicatorColor: Colors.black,
     textTheme: TextTheme(
       title: TextStyle(
         color: Colors.black,
-        fontSize: 22,
+        fontSize: 28,
         fontFamily: "Ariel",
+        fontWeight: FontWeight.bold,
       ),
       subtitle: TextStyle(
         color: Colors.black,
         fontSize: 14,
         fontFamily: "Ariel",
+        fontWeight: FontWeight.bold,
       ),
       subhead: TextStyle(
         color: Colors.white,
