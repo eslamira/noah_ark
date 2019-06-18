@@ -11,10 +11,12 @@ class NoahTheme {
       title: TextStyle(
         color: Colors.black,
         fontSize: 22,
+        fontFamily: "Ariel",
       ),
       subtitle: TextStyle(
         color: Colors.black,
-        fontSize: 16,
+        fontSize: 14,
+        fontFamily: "Ariel",
       ),
       subhead: TextStyle(
         color: Colors.white,

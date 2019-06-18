@@ -23,20 +23,29 @@ class _MainScreenAuthState extends State<MainScreenAuth> {
             'THE ARK',
             textScaleFactor: 1.0,
             textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.title,
           ),
         ),
       ),
       bottomNavigationBar: BottomAppBar(
         color: Color(0xFFFFE200),
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: EdgeInsets.only(left: 12.0, right: 12.0),
           child: Container(
             height: MediaQuery.of(context).size.height * 0.07,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Text('TF OPTION FOUNDATION', textScaleFactor: 1.0),
-                Text('ALL RIGHTS RESERVED', textScaleFactor: 1.0),
+                Text(
+                  'TF OPTION FOUNDATION',
+                  textScaleFactor: 1.0,
+                  style: Theme.of(context).textTheme.subtitle,
+                ),
+                Text(
+                  'ALL RIGHTS RESERVED',
+                  textScaleFactor: 1.0,
+                  style: Theme.of(context).textTheme.subtitle,
+                ),
               ],
             ),
           ),
