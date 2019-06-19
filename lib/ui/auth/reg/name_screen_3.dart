@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:noah_ark/models/user_model.dart';
 import 'package:noah_ark/ui/widgets/noah_container.dart';
 
 class NameScreen extends StatefulWidget {
   final PageController pageController;
-  NameScreen({this.pageController});
+  final UserModel user;
+  NameScreen({this.pageController, this.user});
   @override
   _NameScreenState createState() => _NameScreenState();
 }
@@ -16,8 +18,18 @@ class _NameScreenState extends State<NameScreen> {
   String _error = ' ';
 
   _validateAndNext() async {
-    widget.pageController
-        .nextPage(duration: Duration(milliseconds: 300), curve: Curves.ease);
+    try {
+      widget.user.userName.firstName = _fNameController.text;
+      widget.user.userName.secondName = _sNameController.text;
+      widget.user.userName.thirdName = _tNameController.text;
+      widget.user.userName.fourthName = _foNameController.text;
+      widget.pageController
+          .nextPage(duration: Duration(milliseconds: 300), curve: Curves.ease);
+    } catch (e) {
+      setState(() {
+        _error = 'حدث خطأ برجاء المحاولة مرة أخرى';
+      });
+    }
   }
 
   @override

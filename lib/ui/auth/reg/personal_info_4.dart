@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:noah_ark/models/user_model.dart';
 import 'package:noah_ark/ui/widgets/noah_container.dart';
 import 'package:noah_ark/utils/database_client.dart';
 
 class PersonalInfo extends StatefulWidget {
+  final PageController pageController;
+  final UserModel user;
+  PersonalInfo({this.pageController, this.user});
   @override
   _PersonalInfoState createState() => _PersonalInfoState();
 }
@@ -25,6 +29,22 @@ class _PersonalInfoState extends State<PersonalInfo> {
   _initData() async {
     _cities = await _db.getCities();
     if (mounted) setState(() {});
+  }
+
+  _validateAndNext() async {
+    try {
+      widget.user.userBirth.day = _datePicked.day.toString();
+      widget.user.userBirth.month = _datePicked.month.toString();
+      widget.user.userBirth.year = _datePicked.year.toString();
+      widget.user.userGender = _selectedGender;
+      widget.user.userCity = _selectedCity;
+      widget.pageController
+          .nextPage(duration: Duration(milliseconds: 300), curve: Curves.ease);
+    } catch (e) {
+      setState(() {
+        _error = 'حدث خطأ برجاء المحاولة مرة أخرى';
+      });
+    }
   }
 
   Future<Null> _datePicker(BuildContext context) async {
@@ -180,14 +200,21 @@ class _PersonalInfoState extends State<PersonalInfo> {
             ],
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: NoahContainer(
-            text: "المرحلة التالية",
-            backgroundColor: Color(0xFFcb3b3b),
-            maxWidth: _size.width * 0.9,
-            textColor: Colors.white,
-            fontSize: 16,
+        InkWell(
+          onTap: (_selectedCity != null &&
+                  _selectedGender != null &&
+                  _datePicked != null)
+              ? () => _validateAndNext()
+              : null,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: NoahContainer(
+              text: "المرحلة التالية",
+              backgroundColor: Color(0xFFcb3b3b),
+              maxWidth: _size.width * 0.9,
+              textColor: Colors.white,
+              fontSize: 16,
+            ),
           ),
         ),
         Padding(

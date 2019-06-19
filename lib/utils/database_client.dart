@@ -113,19 +113,19 @@ class DatabaseClient {
 //    });
 //  }
 
-//  /// Checks if this [Phone_Number] Exists
-//  /// Returns [False] if doesn't Exist
-//  /// Returns [True] if Exist
-//  Future<bool> isReferExist(String num) async {
-//    bool exist;
-//    DatabaseReference userRef = _db.reference().child('users/');
-//    Query query = userRef.orderByChild("num").equalTo(num);
-//    await query.once().then((f) {
-//      f.value == null ? exist = false : exist = true;
-//    });
-//    return exist;
-//  }
-//
+  /// Checks if this [Phone_Number] Exists
+  /// Returns [False] if doesn't Exist
+  /// Returns [True] if Exist
+  Future<bool> isReferExist(String num) async {
+    bool exist;
+    DatabaseReference userRef = _db.reference().child('users/');
+    Query query = userRef.orderByChild("num").equalTo(num);
+    await query.once().then((f) {
+      f.value == null ? exist = false : exist = true;
+    });
+    return exist;
+  }
+
 //  Future<double> getUserCash() async {
 //    String userID = await _authClient.isLoggedIn().then((u) => u.uid);
 //    return await _db.reference().child("users/$userID/cash").once().then((s) {

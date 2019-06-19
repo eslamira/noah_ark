@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:noah_ark/models/user_model.dart';
 import 'package:noah_ark/ui/widgets/noah_container.dart';
+import 'package:noah_ark/utils/database_client.dart';
 
 class NumberScreen extends StatefulWidget {
   final PageController pageController;
-  NumberScreen({this.pageController});
+  final UserModel user;
+  NumberScreen({this.pageController, this.user});
   @override
   _NumberScreenState createState() => _NumberScreenState();
 }
@@ -13,8 +16,28 @@ class _NumberScreenState extends State<NumberScreen> {
   String _error = ' ';
 
   _validateAndNext() async {
-    widget.pageController
-        .nextPage(duration: Duration(milliseconds: 300), curve: Curves.ease);
+    try {
+      if (_numController.text.substring(0, 2) == '015') {
+        if (!await DatabaseClient.internal()
+            .isReferExist(_numController.text)) {
+          widget.user.userNum = _numController.text;
+          widget.pageController.nextPage(
+              duration: Duration(milliseconds: 300), curve: Curves.ease);
+        } else {
+          setState(() {
+            _error = 'رقم الجوال غير صالح';
+          });
+        }
+      } else {
+        setState(() {
+          _error = 'رقم الجوال غير صالح';
+        });
+      }
+    } catch (e) {
+      setState(() {
+        _error = 'حدث خطأ برجاء المحاولة مرة أخرى';
+      });
+    }
   }
 
   @override

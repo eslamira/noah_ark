@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:noah_ark/models/user_model.dart';
 import 'package:noah_ark/ui/widgets/noah_container.dart';
+import 'package:noah_ark/utils/database_client.dart';
 
 class ReferScreen extends StatefulWidget {
   final PageController pageController;
-  ReferScreen({this.pageController});
+  final UserModel user;
+  ReferScreen({this.pageController, this.user});
   @override
   _ReferScreenState createState() => _ReferScreenState();
 }
@@ -13,8 +16,21 @@ class _ReferScreenState extends State<ReferScreen> {
   String _error = ' ';
 
   _validateAndNext() async {
-    widget.pageController
-        .nextPage(duration: Duration(milliseconds: 300), curve: Curves.ease);
+    try {
+      if (await DatabaseClient.internal().isReferExist(_numController.text)) {
+        widget.user.userRef = _numController.text;
+        widget.pageController.nextPage(
+            duration: Duration(milliseconds: 300), curve: Curves.ease);
+      } else {
+        setState(() {
+          _error = 'كود الأحالة غير صحيح';
+        });
+      }
+    } catch (e) {
+      setState(() {
+        _error = 'حدث خطأ برجاء المحاولة مرة أخرى';
+      });
+    }
   }
 
   @override
@@ -41,6 +57,7 @@ class _ReferScreenState extends State<ReferScreen> {
                   onChanged: (v) {
                     setState(() {});
                   },
+                  maxLength: 11,
                   controller: _numController,
                   keyboardType: TextInputType.number,
                   style: Theme.of(context).textTheme.display1,

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:noah_ark/ui/widgets/noah_container.dart';
 
 class ScratchScreen extends StatefulWidget {
+  final PageController pageController;
+  ScratchScreen({this.pageController});
   @override
   _ScratchScreenState createState() => _ScratchScreenState();
 }
