@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:noah_ark/utils/auth_client.dart';
 
 class NoahScaffold extends StatelessWidget {
   final PreferredSizeWidget appbar;
@@ -13,17 +14,28 @@ class NoahScaffold extends StatelessWidget {
     this.bottomNavigationBar,
   }) : super(key: key);
 
+  _onExitTapHandler() async {
+    AuthClient _auth = AuthClient.internal();
+    if (await _auth.isLoggedIn() != null) {
+      await _auth.signOut();
+      // TODO:(eslamira) pop all and nav to welcome
+    } else {
+      exit(0);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appbar ??
           AppBar(
             leading: IconButton(
-                icon: Icon(
-                  Icons.power_settings_new,
-                  color: Colors.black,
-                ),
-                onPressed: () => exit(0)),
+              icon: Icon(
+                Icons.power_settings_new,
+                color: Colors.black,
+              ),
+              onPressed: () => _onExitTapHandler(),
+            ),
             title: Align(
               alignment: Alignment.centerLeft,
               child: Text(

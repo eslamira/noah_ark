@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tiny_widgets/tiny_widgets.dart';
 import 'package:noah_ark/ui/widgets/noah_scaffold.dart';
+import 'package:tiny_widgets/tiny_widgets.dart';
 
 class MainScreen extends StatefulWidget {
   @override
@@ -175,7 +175,7 @@ class _MainScreenState extends State<MainScreen> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 20),
+              padding: const EdgeInsets.only(top: 20, bottom: 20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
