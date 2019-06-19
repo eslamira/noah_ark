@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:noah_ark/models/user_model.dart';
-import 'package:noah_ark/ui/widgets/noah_container.dart';
+import 'package:noah_ark/ui/common/common.dart';
 import 'package:noah_ark/utils/database_client.dart';
 import 'package:tiny_widgets/tiny_widgets.dart';
 
 class NumberScreen extends StatefulWidget {
   final PageController pageController;
   final UserModel user;
-  NumberScreen({this.pageController, this.user});
+  NumberScreen({this.pageController, @required this.user});
   @override
   _NumberScreenState createState() => _NumberScreenState();
 }
@@ -18,23 +18,36 @@ class _NumberScreenState extends State<NumberScreen> {
 
   _validateAndNext() async {
     try {
-      if (_numController.text.substring(0, 2) == '015') {
-        if (!await DatabaseClient.internal()
-            .isReferExist(_numController.text)) {
-          widget.user.userNum = _numController.text;
-          widget.pageController.nextPage(
-              duration: Duration(milliseconds: 300), curve: Curves.ease);
-        } else {
+      Common.internal().loading(context);
+      if (_numController.text.length == 11) {
+        if (_numController.text.substring(0, 3) == '015') {
+          print(_numController.text.substring(0, 3));
+          Navigator.of(context).pop();
           setState(() {
             _error = 'رقم الجوال غير صالح';
           });
+        } else {
+          if (!await DatabaseClient.internal()
+              .isReferExist(_numController.text)) {
+            widget.user.userNum = _numController.text;
+            Navigator.of(context).pop();
+            widget.pageController.nextPage(
+                duration: Duration(milliseconds: 300), curve: Curves.ease);
+          } else {
+            Navigator.of(context).pop();
+            setState(() {
+              _error = 'رقم الجوال غير صالح';
+            });
+          }
         }
       } else {
+        Navigator.of(context).pop();
         setState(() {
           _error = 'رقم الجوال غير صالح';
         });
       }
     } catch (e) {
+      Navigator.of(context).pop();
       setState(() {
         _error = 'حدث خطأ برجاء المحاولة مرة أخرى';
       });
@@ -66,6 +79,7 @@ class _NumberScreenState extends State<NumberScreen> {
                     setState(() {});
                   },
                   controller: _numController,
+                  maxLength: 11,
                   keyboardType: TextInputType.number,
                   style: Theme.of(context).textTheme.display1,
                 ),

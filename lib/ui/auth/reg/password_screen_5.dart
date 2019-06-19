@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:noah_ark/models/user_model.dart';
-import 'package:noah_ark/ui/widgets/noah_container.dart';
+import 'package:noah_ark/ui/common/common.dart';
 import 'package:tiny_widgets/tiny_widgets.dart';
 
 class PasswordScreen extends StatefulWidget {
   final PageController pageController;
   final UserModel user;
-  PasswordScreen({this.pageController, this.user});
+  PasswordScreen({this.pageController, @required this.user});
   @override
   _PasswordScreenState createState() => _PasswordScreenState();
 }
@@ -17,27 +17,35 @@ class _PasswordScreenState extends State<PasswordScreen> {
   String _error;
 
   _validateAndNext() async {
-    if ((_pass1Controller.text == _pass2Controller.text) &&
-        (_pass1Controller.text.length > 7 &&
-            _pass2Controller.text.length > 7)) {
-      print(widget.user.userRef);
-      print(widget.user.userNum);
-      print(widget.user.userName.firstName);
-      print(widget.user.userName.secondName);
-      print(widget.user.userName.thirdName);
-      print(widget.user.userName.fourthName);
-      print(widget.user.userBirth.day);
-      print(widget.user.userBirth.month);
-      print(widget.user.userBirth.year);
-      print(widget.user.userGender);
-      print(widget.user.userCity);
+    Common.internal().loading(context);
+    if (_pass1Controller.text.length > 7 && _pass2Controller.text.length > 7) {
+      if (_pass1Controller.text == _pass2Controller.text) {
+        print(widget.user.userRef);
+        print(widget.user.userNum);
+        print(widget.user.userName.firstName);
+        print(widget.user.userName.secondName);
+        print(widget.user.userName.thirdName);
+        print(widget.user.userName.fourthName);
+        print(widget.user.userBirth.day);
+        print(widget.user.userBirth.month);
+        print(widget.user.userBirth.year);
+        print(widget.user.userGender);
+        print(widget.user.userCity);
+        Navigator.of(context).pop();
+        widget.pageController.nextPage(
+            duration: Duration(milliseconds: 300), curve: Curves.ease);
+      } else {
+        Navigator.of(context).pop();
+        setState(() {
+          _error = 'تأكد من تطابق كلمة المرور';
+        });
+      }
     } else {
+      Navigator.of(context).pop();
       setState(() {
-        _error = '';
+        _error = 'كلمة المرور يجب ان لا تقل عن 8 حروف لاتينية وأرقام';
       });
     }
-//    widget.pageController
-//        .nextPage(duration: Duration(milliseconds: 300), curve: Curves.ease);
   }
 
   @override
@@ -110,21 +118,16 @@ class _PasswordScreenState extends State<PasswordScreen> {
               : null,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: NoahContainer(
+            child: TinyContainer(
               text: "المرحلة التالية",
-              backgroundColor: Color(0xFFcb3b3b),
+              backgroundColor: (_pass1Controller.text.length > 1 &&
+                      _pass2Controller.text.length > 1)
+                  ? Color(0xFFcb3b3b)
+                  : Colors.grey[800],
               maxWidth: _size.width * 0.9,
               textColor: Colors.white,
               fontSize: 16,
             ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: TinyContainer(
-            text: "المرحلة التالية",
-            backgroundColor: Color(0xFFcb3b3b),
-            maxWidth: _size.width * 0.9,
-            textColor: Colors.white,
-            fontSize: 16,
           ),
         ),
         Padding(

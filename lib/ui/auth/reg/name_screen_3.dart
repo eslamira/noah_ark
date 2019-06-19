@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:tiny_widgets/tiny_widgets.dart';
 import 'package:noah_ark/models/user_model.dart';
-import 'package:noah_ark/ui/widgets/noah_container.dart';
+import 'package:noah_ark/ui/common/common.dart';
+import 'package:tiny_widgets/tiny_widgets.dart';
 
 class NameScreen extends StatefulWidget {
   final PageController pageController;
   final UserModel user;
-  NameScreen({this.pageController, this.user});
+  NameScreen({this.pageController, @required this.user});
   @override
   _NameScreenState createState() => _NameScreenState();
 }
@@ -20,13 +20,16 @@ class _NameScreenState extends State<NameScreen> {
 
   _validateAndNext() async {
     try {
+      Common.internal().loading(context);
       widget.user.userName.firstName = _fNameController.text;
       widget.user.userName.secondName = _sNameController.text;
       widget.user.userName.thirdName = _tNameController.text;
       widget.user.userName.fourthName = _foNameController.text;
+      Navigator.of(context).pop();
       widget.pageController
           .nextPage(duration: Duration(milliseconds: 300), curve: Curves.ease);
     } catch (e) {
+      Navigator.of(context).pop();
       setState(() {
         _error = 'حدث خطأ برجاء المحاولة مرة أخرى';
       });
@@ -66,7 +69,6 @@ class _NameScreenState extends State<NameScreen> {
                       onChanged: (v) {
                         setState(() {});
                       },
-                      keyboardType: TextInputType.number,
                       style: Theme.of(context).textTheme.display1,
                     ),
                   ),
@@ -83,7 +85,6 @@ class _NameScreenState extends State<NameScreen> {
                       onChanged: (v) {
                         setState(() {});
                       },
-                      keyboardType: TextInputType.number,
                       style: Theme.of(context).textTheme.display1,
                     ),
                   ),
@@ -100,7 +101,6 @@ class _NameScreenState extends State<NameScreen> {
                       onChanged: (v) {
                         setState(() {});
                       },
-                      keyboardType: TextInputType.number,
                       style: Theme.of(context).textTheme.display1,
                     ),
                   ),
@@ -117,7 +117,6 @@ class _NameScreenState extends State<NameScreen> {
                       onChanged: (v) {
                         setState(() {});
                       },
-                      keyboardType: TextInputType.number,
                       style: Theme.of(context).textTheme.display1,
                     ),
                   ),

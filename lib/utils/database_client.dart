@@ -43,7 +43,7 @@ class DatabaseClient {
     await _db.reference().child("config/cities/").once().then((s) {
       Map m = s.value;
       m.values.forEach((v) {
-        if (v['active']) {
+        if (v['active'] ?? true) {
           c.add(v['name']);
         }
       });

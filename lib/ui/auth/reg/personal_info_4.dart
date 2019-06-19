@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:noah_ark/models/user_model.dart';
-import 'package:noah_ark/ui/widgets/noah_container.dart';
+import 'package:noah_ark/ui/common/common.dart';
 import 'package:noah_ark/utils/database_client.dart';
 import 'package:tiny_widgets/tiny_widgets.dart';
 
 class PersonalInfo extends StatefulWidget {
   final PageController pageController;
   final UserModel user;
-  PersonalInfo({this.pageController, this.user});
+  PersonalInfo({this.pageController, @required this.user});
   @override
   _PersonalInfoState createState() => _PersonalInfoState();
 }
@@ -34,14 +34,17 @@ class _PersonalInfoState extends State<PersonalInfo> {
 
   _validateAndNext() async {
     try {
+      Common.internal().loading(context);
       widget.user.userBirth.day = _datePicked.day.toString();
       widget.user.userBirth.month = _datePicked.month.toString();
       widget.user.userBirth.year = _datePicked.year.toString();
       widget.user.userGender = _selectedGender;
       widget.user.userCity = _selectedCity;
+      Navigator.of(context).pop();
       widget.pageController
           .nextPage(duration: Duration(milliseconds: 300), curve: Curves.ease);
     } catch (e) {
+      Navigator.of(context).pop();
       setState(() {
         _error = 'حدث خطأ برجاء المحاولة مرة أخرى';
       });
@@ -201,14 +204,6 @@ class _PersonalInfoState extends State<PersonalInfo> {
             ],
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: TinyContainer(
-            text: "المرحلة التالية",
-            backgroundColor: Color(0xFFcb3b3b),
-            maxWidth: _size.width * 0.9,
-            textColor: Colors.white,
-            fontSize: 16,
         InkWell(
           onTap: (_selectedCity != null &&
                   _selectedGender != null &&
@@ -217,9 +212,13 @@ class _PersonalInfoState extends State<PersonalInfo> {
               : null,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: NoahContainer(
+            child: TinyContainer(
               text: "المرحلة التالية",
-              backgroundColor: Color(0xFFcb3b3b),
+              backgroundColor: (_selectedCity != null &&
+                      _selectedGender != null &&
+                      _datePicked != null)
+                  ? Color(0xFFcb3b3b)
+                  : Colors.grey[800],
               maxWidth: _size.width * 0.9,
               textColor: Colors.white,
               fontSize: 16,
