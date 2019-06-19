@@ -16,6 +16,13 @@ class _PasswordScreenState extends State<PasswordScreen> {
   final TextEditingController _pass2Controller = TextEditingController();
   String _error;
 
+  @override
+  void dispose() {
+    _pass1Controller?.dispose();
+    _pass2Controller?.dispose();
+    super.dispose();
+  }
+
   _validateAndNext() async {
     Common.internal().loading(context);
     if (_pass1Controller.text.length > 7 && _pass2Controller.text.length > 7) {

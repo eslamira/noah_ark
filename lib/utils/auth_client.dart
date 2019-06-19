@@ -24,6 +24,16 @@ class AuthClient {
         email: email, password: pass);
   }
 
+  // SignUp Using Email & Password
+  // Returns FirebaseUser on Success
+  Future<FirebaseUser> signUpWithEmailAndPassword(
+      String email, String password) async {
+    FirebaseUser user = await _authClient.createUserWithEmailAndPassword(
+        email: email, password: password);
+    await signInWithEmailAndPassword(email, password);
+    return user;
+  }
+
   // Sign Out From Google Account & FB Account & Firebase _auth
   // No Returns
   Future<void> signOut() async {

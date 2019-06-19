@@ -19,6 +19,15 @@ class _NameScreenState extends State<NameScreen> {
   bool _isArabic = false;
   String _error = ' ';
 
+  @override
+  void dispose() {
+    _fNameController?.dispose();
+    _sNameController?.dispose();
+    _tNameController?.dispose();
+    _foNameController?.dispose();
+    super.dispose();
+  }
+
   void _validator(val) {
     if (val.contains(RegExp('^[\u0621-\u064A ]+\$'))) {
       if (val.text.length >= 1) {

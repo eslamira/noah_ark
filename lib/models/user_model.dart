@@ -7,6 +7,14 @@ class UserModel {
   String userCity;
   String userPass;
   String userPinCode;
+  int cash;
+  int directCounter;
+  int unDirectCounter;
+  int secondaryCounter;
+  int subSecondaryCounter;
+  bool isActive;
+  bool isComplete;
+  bool isDefined;
 
   UserModel() {
     userRef = '';
@@ -17,6 +25,14 @@ class UserModel {
     userCity = '';
     userPass = '';
     userPinCode = '';
+    cash = 0;
+    directCounter = 0;
+    unDirectCounter = 0;
+    secondaryCounter = 0;
+    subSecondaryCounter = 0;
+    isActive = false;
+    isComplete = false;
+    isDefined = false;
   }
 
   UserModel.fromMap(Map m) {
@@ -27,6 +43,14 @@ class UserModel {
     userGender = m['gen'];
     userCity = m['city'];
     userPinCode = m['pin'];
+    cash = m['cash'];
+    directCounter = m['directCounter'];
+    unDirectCounter = m['unDirectCounter'];
+    secondaryCounter = m['secondaryCounter'];
+    subSecondaryCounter = m['subSecondaryCounter'];
+    isActive = m['isActive'];
+    isComplete = m['isComplete'];
+    isDefined = m['isDefined'];
   }
 
   toMap() {
@@ -38,6 +62,14 @@ class UserModel {
       'gen': userGender,
       'city': userCity,
       'pin': userPinCode,
+      'cash': cash,
+      'directCounter': directCounter,
+      'unDirectCounter': unDirectCounter,
+      'secondaryCounter': secondaryCounter,
+      'subSecondaryCounter': subSecondaryCounter,
+      'isActive': isActive,
+      'isComplete': isComplete,
+      'isDefined': isDefined,
     };
   }
 }

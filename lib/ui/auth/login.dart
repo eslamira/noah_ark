@@ -15,6 +15,13 @@ class _LoginState extends State<Login> {
   final TextEditingController _passController = TextEditingController();
   String _error = ' ';
 
+  @override
+  void dispose() {
+    _numController?.dispose();
+    _passController?.dispose();
+    super.dispose();
+  }
+
   _login() async {
     try {
       Common.internal().loading(context);

@@ -16,6 +16,12 @@ class _ReferScreenState extends State<ReferScreen> {
   final TextEditingController _numController = TextEditingController();
   String _error = ' ';
 
+  @override
+  void dispose() {
+    _numController?.dispose();
+    super.dispose();
+  }
+
   _validateAndNext() async {
     try {
       Common.internal().loading(context);

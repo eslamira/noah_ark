@@ -1,5 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:noah_ark/models/ad_model.dart';
+import 'package:noah_ark/models/scratch_model.dart';
+import 'package:noah_ark/models/user_model.dart';
+import 'package:noah_ark/ui/common/common.dart';
+import 'package:noah_ark/utils/auth_client.dart';
 
 class DatabaseClient {
   FirebaseDatabase _db = FirebaseDatabase.instance;
@@ -137,6 +142,51 @@ class DatabaseClient {
       f.value == null ? exist = false : exist = true;
     });
     return exist;
+  }
+
+  Future<ScratchModel> getScratch(String scratch) async {
+    ScratchModel scratchModel;
+    await _db
+        .reference()
+        .child('scratches/')
+        .orderByChild("id")
+        .equalTo(scratch)
+        .once()
+        .then((d) {
+      if (d.value != null) {
+        scratchModel = ScratchModel.fromMap(d.key, d.value);
+      }
+    });
+    return scratchModel;
+  }
+
+  Future<void> useScratch(ScratchModel scratch, String userNum) async {
+//    String uid = await AuthClient.internal().isLoggedIn().then((f) => f.uid);
+    String error;
+    await _db
+        .reference()
+        .child('scratches/${scratch.scratchId}/')
+        .runTransaction((t) {
+      if (t.value == null) {
+        error = "Doesn't Exist";
+      } else if (t.value['used'] == true) {
+        error = "Used Before";
+      } else {
+        t.value['used'] = true;
+//        t.value['uid'] = uid;
+        t.value['num'] = userNum;
+      }
+    }).then((_) async {
+      if (error != null) {
+        throw Exception("$error");
+      }
+    });
+  }
+
+  Future<void> createAccount(UserModel user) async {
+    FirebaseUser u = await AuthClient.internal().signUpWithEmailAndPassword(
+        '${user.userNum}${Common.internal().dummyDomain}', user.userPass);
+    await _db.reference().child('users/${u.uid}/').set(user.toMap());
   }
 
 //  Future<double> getUserCash() async {
