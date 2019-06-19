@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:noah_ark/ui/widgets/noah_container.dart';
+import 'package:tiny_widgets/tiny_widgets.dart';
 
 class ReferScreen extends StatefulWidget {
   final PageController pageController;
@@ -25,13 +25,13 @@ class _ReferScreenState extends State<ReferScreen> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            NoahContainer(
+            TinyContainer(
               maxWidth: MediaQuery.of(context).size.width * 0.45,
               maxHeight: MediaQuery.of(context).size.width * 0.12,
               text: 'كود الأحالة',
               fontWeight: FontWeight.bold,
             ),
-            NoahContainer(
+            TinyContainer(
               maxWidth: MediaQuery.of(context).size.width * 0.45,
               maxHeight: MediaQuery.of(context).size.width * 0.12,
               backgroundColor: Colors.grey[900],
@@ -50,7 +50,7 @@ class _ReferScreenState extends State<ReferScreen> {
           ],
         ),
         Padding(padding: EdgeInsets.only(bottom: 24.0)),
-        NoahContainer(
+        TinyContainer(
           onTap: (_numController.text.length > 1)
               ? () => _validateAndNext()
               : null,
@@ -63,7 +63,7 @@ class _ReferScreenState extends State<ReferScreen> {
           fontWeight: FontWeight.bold,
         ),
         Padding(padding: EdgeInsets.only(bottom: 24.0)),
-        NoahContainer(
+        TinyContainer(
           maxWidth: MediaQuery.of(context).size.width * 0.9,
           maxHeight: MediaQuery.of(context).size.width * 0.12,
           backgroundColor: Colors.grey[900],

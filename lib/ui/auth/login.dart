@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:noah_ark/ui/common/common.dart';
-import 'package:noah_ark/ui/widgets/noah_container.dart';
+import 'package:tiny_widgets/tiny_widgets.dart';
 import 'package:noah_ark/utils/auth_client.dart';
 
 class Login extends StatefulWidget {
@@ -43,13 +43,13 @@ class _LoginState extends State<Login> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            NoahContainer(
+            TinyContainer(
               maxWidth: MediaQuery.of(context).size.width * 0.45,
               maxHeight: MediaQuery.of(context).size.width * 0.12,
               text: 'رقم الحساب',
               fontWeight: FontWeight.bold,
             ),
-            NoahContainer(
+            TinyContainer(
               maxWidth: MediaQuery.of(context).size.width * 0.45,
               maxHeight: MediaQuery.of(context).size.width * 0.12,
               backgroundColor: Colors.grey[900],
@@ -68,13 +68,13 @@ class _LoginState extends State<Login> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            NoahContainer(
+            TinyContainer(
               maxWidth: MediaQuery.of(context).size.width * 0.45,
               maxHeight: MediaQuery.of(context).size.width * 0.12,
               text: 'كلمة المرور',
               fontWeight: FontWeight.bold,
             ),
-            NoahContainer(
+            TinyContainer(
               maxWidth: MediaQuery.of(context).size.width * 0.45,
               maxHeight: MediaQuery.of(context).size.width * 0.12,
               backgroundColor: Colors.grey[900],
@@ -89,7 +89,7 @@ class _LoginState extends State<Login> {
           ],
         ),
         Padding(padding: EdgeInsets.only(bottom: 24.0)),
-        NoahContainer(
+        TinyContainer(
           onTap: (_numController.text.length > 1 &&
                   _passController.text.length > 1)
               ? () => _login()
@@ -104,7 +104,7 @@ class _LoginState extends State<Login> {
           fontWeight: FontWeight.bold,
         ),
         Padding(padding: EdgeInsets.only(bottom: 24.0)),
-        NoahContainer(
+        TinyContainer(
           maxWidth: MediaQuery.of(context).size.width * 0.9,
           maxHeight: MediaQuery.of(context).size.width * 0.12,
           backgroundColor: Colors.grey[800],

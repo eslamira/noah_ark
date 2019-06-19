@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:noah_ark/ui/widgets/noah_container.dart';
+import 'package:tiny_widgets/tiny_widgets.dart';
 
 class ScratchScreen extends StatefulWidget {
   @override
@@ -16,7 +16,7 @@ class _ScratchScreenState extends State<ScratchScreen> {
       children: <Widget>[
         Padding(
           padding: EdgeInsets.fromLTRB(8, _size.height * 0.1, 8, 8),
-          child: NoahContainer(
+          child: TinyContainer(
             text: "سكراتش كارد",
             backgroundColor: Color(0xFF6D6DFF),
             maxWidth: _size.width * 0.9,
@@ -26,7 +26,7 @@ class _ScratchScreenState extends State<ScratchScreen> {
         ),
         Padding(
           padding: EdgeInsets.fromLTRB(8, _size.height * 0.1, 8, 8),
-          child: NoahContainer(
+          child: TinyContainer(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextField(),
@@ -39,7 +39,7 @@ class _ScratchScreenState extends State<ScratchScreen> {
         ),
         Padding(
           padding: const EdgeInsets.all(8.0),
-          child: NoahContainer(
+          child: TinyContainer(
             text: "المرحلة التالية",
             backgroundColor: Color(0xFFcb3b3b),
             maxWidth: _size.width * 0.9,
@@ -49,7 +49,7 @@ class _ScratchScreenState extends State<ScratchScreen> {
         ),
         Padding(
           padding: const EdgeInsets.all(8.0),
-          child: NoahContainer(
+          child: TinyContainer(
             text: _error ?? " ",
             backgroundColor: Colors.white24,
             maxWidth: _size.width * 0.9,
