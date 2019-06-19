@@ -16,6 +16,8 @@ dependencies:
   firebase_auth: ^0.11.1+6
   font_awesome_flutter: ^8.4.0
   carousel_pro: ^0.0.1
+  secure_pin_code:
+    git: https://github.com/TinyProgrammers/secure_pin_code.git
   tiny_widgets:
     git: https://github.com/TinyProgrammers/tiny_widgets.git
 

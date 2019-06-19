@@ -7,11 +7,13 @@ class NoahScaffold extends StatelessWidget {
   final PreferredSizeWidget appbar;
   final Widget body;
   final Widget bottomNavigationBar;
+  final bool isScrollable;
   const NoahScaffold({
     Key key,
     this.appbar,
     this.body,
     this.bottomNavigationBar,
+    this.isScrollable = true,
   }) : super(key: key);
 
   _onExitTapHandler(BuildContext context) async {
@@ -26,6 +28,32 @@ class NoahScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Widget _bodyWidget;
+
+    if (isScrollable) {
+      _bodyWidget = Column(
+        children: <Widget>[
+          Expanded(
+            child: SingleChildScrollView(
+              child: Container(
+                child: body,
+              ),
+            ),
+          ),
+        ],
+      );
+    } else {
+      _bodyWidget = Column(
+        children: <Widget>[
+          Expanded(
+            child: Container(
+              child: body,
+            ),
+          ),
+        ],
+      );
+    }
+
     return Scaffold(
       appBar: appbar ??
           AppBar(
@@ -46,17 +74,7 @@ class NoahScaffold extends StatelessWidget {
               ),
             ),
           ),
-      body: Column(
-        children: <Widget>[
-          Expanded(
-            child: SingleChildScrollView(
-              child: Container(
-                child: body,
-              ),
-            ),
-          ),
-        ],
-      ),
+      body: _bodyWidget,
       bottomNavigationBar: bottomNavigationBar ??
           BottomAppBar(
             color: Color(0xFFFFE200),
