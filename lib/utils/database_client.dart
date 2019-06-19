@@ -189,6 +189,13 @@ class DatabaseClient {
     await _db.reference().child('users/${u.uid}/').set(user.toMap());
   }
 
+  Future<String> getUserPin() async {
+    String userID = await AuthClient.internal().isLoggedIn().then((u) => u.uid);
+    return await _db.reference().child("users/$userID/pin").once().then((s) {
+      return (s.value);
+    });
+  }
+
 //  Future<double> getUserCash() async {
 //    String userID = await _authClient.isLoggedIn().then((u) => u.uid);
 //    return await _db.reference().child("users/$userID/cash").once().then((s) {

@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:noah_ark/ui/common/common.dart';
+import 'package:noah_ark/ui/common/pin_code.dart';
 import 'package:noah_ark/utils/auth_client.dart';
 import 'package:tiny_widgets/tiny_widgets.dart';
 
@@ -29,7 +30,9 @@ class _LoginState extends State<Login> {
           '${_numController.text}${Common.internal().dummyDomain}',
           _passController.text);
       Navigator.of(context).pop();
-      Navigator.of(context).pushNamedAndRemoveUntil('/home', (route) => false);
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (BuildContext context) => PinCode()),
+          (route) => false);
     } on SocketException {
       setState(() {
         _error = 'تأكد من الأتصال بالشبكه وحاول مرة أخرى';

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:noah_ark/models/user_model.dart';
 import 'package:noah_ark/ui/widgets/noah_scaffold.dart';
 import 'package:noah_ark/utils/auth_client.dart';
+import 'package:noah_ark/utils/database_client.dart';
 import 'package:secure_pin_code/secure_pin_code.dart';
 import 'package:tiny_widgets/tiny_widgets.dart';
 
@@ -29,8 +30,14 @@ class _PinCodeState extends State<PinCode> {
   @override
   void initState() {
     super.initState();
+    _initData();
+  }
+
+  _initData() async {
     if (widget.user != null) {
       _correctPin = widget.user.userPinCode;
+    } else {
+      _correctPin = await DatabaseClient.internal().getUserPin();
     }
   }
 
@@ -94,9 +101,13 @@ class _PinCodeState extends State<PinCode> {
           codeLength: 4,
           correctPin: _correctPin,
           onCodeSuccess: (val) {
-            widget.onResume
-                ? Navigator.of(context).pop()
-                : Navigator.of(context).pushReplacementNamed('/ads');
+            if (widget.pageController != null) {
+              _savePinAndNav(val);
+            } else {
+              widget.onResume
+                  ? Navigator.of(context).pop()
+                  : Navigator.of(context).pushReplacementNamed('/ads');
+            }
           },
           onCodeFails: (val) {
             if (widget.pageController != null) {
