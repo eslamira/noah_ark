@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:noah_ark/models/ad_model.dart';
+import 'package:noah_ark/ui/widgets/ad_dialog.dart';
 import 'package:noah_ark/ui/widgets/noah_scaffold.dart';
+import 'package:noah_ark/utils/database_client.dart';
 import 'package:tiny_widgets/tiny_widgets.dart';
 
 class MainScreen extends StatefulWidget {
@@ -8,6 +11,29 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+  List<AdModel> _adList = List<AdModel>();
+  final _db = DatabaseClient.internal();
+
+  @override
+  void initState() {
+    super.initState();
+    _initData();
+  }
+
+  _initData() async {
+    _adList = await _db.getAllAds();
+    if (mounted) setState(() {});
+  }
+
+  _watchNextAd() {
+    return showDialog(
+      context: context,
+      barrierDismissible: false,
+      // assuming that we remove from stack every watched one
+      builder: (context) => AdDialog(adModel: _adList.first),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final _size = MediaQuery.of(context).size;
@@ -45,14 +71,14 @@ class _MainScreenState extends State<MainScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   TinyContainer(
-                    text: "0",
+                    text: "0", // Cash
                     backgroundColor: Colors.white24,
                     maxWidth: _size.width * 0.2,
                     textColor: Colors.white,
                     fontSize: 16,
                   ),
                   TinyContainer(
-                    text: "0",
+                    text: "0", // Next Cash
                     backgroundColor: Colors.white24,
                     maxWidth: _size.width * 0.2,
                     textColor: Colors.white,
@@ -89,14 +115,14 @@ class _MainScreenState extends State<MainScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   TinyContainer(
-                    text: "0",
+                    text: "${_adList.length}", // Ava. Ads
                     backgroundColor: Colors.white24,
                     maxWidth: _size.width * 0.2,
                     textColor: Colors.white,
                     fontSize: 16,
                   ),
                   TinyContainer(
-                    text: "0",
+                    text: "0", // Watched Ads
                     backgroundColor: Colors.white24,
                     maxWidth: _size.width * 0.2,
                     textColor: Colors.white,
@@ -112,8 +138,10 @@ class _MainScreenState extends State<MainScreen> {
                 color: Colors.white24,
                 alignment: Alignment.center,
                 child: TinyContainer(
+                  onTap: _adList.length < 1 ? null : () => _watchNextAd(),
                   text: "شاهد",
-                  backgroundColor: Colors.redAccent,
+                  backgroundColor:
+                      _adList.length < 1 ? Colors.grey : Colors.redAccent,
                   maxWidth: _size.width * 0.25,
                   textColor: Colors.white,
                   fontSize: 16,
