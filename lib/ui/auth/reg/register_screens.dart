@@ -37,7 +37,7 @@ class _RegisterScreensState extends State<RegisterScreens> {
         NameScreen(pageController: _controller, user: _user),
         PersonalInfo(pageController: _controller, user: _user),
         PasswordScreen(pageController: _controller, user: _user),
-        ScratchScreen(pageController: _controller),
+        ScratchScreen(pageController: _controller, user: _user),
       ],
     );
   }

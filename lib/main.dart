@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:noah_ark/ui/auth/main_auth.dart';
 import 'package:noah_ark/ui/main_screen.dart';
 import 'package:noah_ark/ui/splash_screen.dart';
 import 'package:noah_ark/utils/noah_theme.dart';
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
       home: SplashScreen(),
       routes: <String, WidgetBuilder>{
         '/home': (BuildContext context) => MainScreen(),
+        '/auth': (BuildContext context) => MainScreenAuth(),
       },
     );
   }

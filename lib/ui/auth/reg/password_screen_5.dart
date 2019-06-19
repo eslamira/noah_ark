@@ -20,17 +20,7 @@ class _PasswordScreenState extends State<PasswordScreen> {
     Common.internal().loading(context);
     if (_pass1Controller.text.length > 7 && _pass2Controller.text.length > 7) {
       if (_pass1Controller.text == _pass2Controller.text) {
-        print(widget.user.userRef);
-        print(widget.user.userNum);
-        print(widget.user.userName.firstName);
-        print(widget.user.userName.secondName);
-        print(widget.user.userName.thirdName);
-        print(widget.user.userName.fourthName);
-        print(widget.user.userBirth.day);
-        print(widget.user.userBirth.month);
-        print(widget.user.userBirth.year);
-        print(widget.user.userGender);
-        print(widget.user.userCity);
+        widget.user.userPass = _pass1Controller.text;
         Navigator.of(context).pop();
         widget.pageController.nextPage(
             duration: Duration(milliseconds: 300), curve: Curves.ease);
@@ -63,6 +53,7 @@ class _PasswordScreenState extends State<PasswordScreen> {
                 backgroundColor: Color(0xFF6D6DFF),
                 maxWidth: _size.width * 0.4,
                 textColor: Colors.white,
+                fontWeight: FontWeight.bold,
                 fontSize: 16,
               ),
               TinyContainer(
@@ -91,6 +82,7 @@ class _PasswordScreenState extends State<PasswordScreen> {
                 text: "إعادة كلمة المرور",
                 backgroundColor: Color(0xFF6D6DFF),
                 maxWidth: _size.width * 0.4,
+                fontWeight: FontWeight.bold,
                 textColor: Colors.white,
                 fontSize: 16,
               ),
@@ -125,6 +117,7 @@ class _PasswordScreenState extends State<PasswordScreen> {
                   ? Color(0xFFcb3b3b)
                   : Colors.grey[800],
               maxWidth: _size.width * 0.9,
+              fontWeight: FontWeight.bold,
               textColor: Colors.white,
               fontSize: 16,
             ),
@@ -134,9 +127,9 @@ class _PasswordScreenState extends State<PasswordScreen> {
           padding: const EdgeInsets.all(8.0),
           child: TinyContainer(
             text: _error ?? " ",
-            backgroundColor: Colors.white24,
             maxWidth: _size.width * 0.9,
-            textColor: Colors.red,
+            fontWeight: FontWeight.bold,
+            backgroundColor: Colors.grey[900],
             fontSize: 16,
           ),
         ),
