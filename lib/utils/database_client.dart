@@ -1,4 +1,5 @@
 import 'package:firebase_database/firebase_database.dart';
+import 'package:noah_ark/models/ad_model.dart';
 
 class DatabaseClient {
   FirebaseDatabase _db = FirebaseDatabase.instance;
@@ -64,6 +65,18 @@ class DatabaseClient {
       }
     });
     return ads;
+  }
+
+  Future<List<AdModel>> getAllAds() async {
+    List<AdModel> c = List<AdModel>();
+    await _db.reference().child("ads").once().then((s) {
+      s.value.forEach((key, value) {
+        if (value['active']) {
+          c.add(AdModel.fromMap(key, value));
+        }
+      });
+    });
+    return c;
   }
 
 //  Future<AdModel> getAd(String city, String gender, String age) async {
