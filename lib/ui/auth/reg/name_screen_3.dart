@@ -6,7 +6,7 @@ import 'package:tiny_widgets/tiny_widgets.dart';
 class NameScreen extends StatefulWidget {
   final PageController pageController;
   final UserModel user;
-  NameScreen({this.pageController, @required this.user});
+  NameScreen({@required this.pageController, @required this.user});
   @override
   _NameScreenState createState() => _NameScreenState();
 }

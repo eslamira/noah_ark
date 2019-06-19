@@ -7,7 +7,7 @@ import 'package:tiny_widgets/tiny_widgets.dart';
 class ReferScreen extends StatefulWidget {
   final PageController pageController;
   final UserModel user;
-  ReferScreen({this.pageController, @required this.user});
+  ReferScreen({@required this.pageController, @required this.user});
   @override
   _ReferScreenState createState() => _ReferScreenState();
 }

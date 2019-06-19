@@ -6,6 +6,7 @@ import 'package:noah_ark/ui/auth/reg/password_screen_5.dart';
 import 'package:noah_ark/ui/auth/reg/personal_info_4.dart';
 import 'package:noah_ark/ui/auth/reg/refer_screen_1.dart';
 import 'package:noah_ark/ui/auth/reg/scratch_card_7.dart';
+import 'package:noah_ark/ui/common/pin_code.dart';
 
 class RegisterScreens extends StatefulWidget {
   @override
@@ -37,6 +38,8 @@ class _RegisterScreensState extends State<RegisterScreens> {
         NameScreen(pageController: _controller, user: _user),
         PersonalInfo(pageController: _controller, user: _user),
         PasswordScreen(pageController: _controller, user: _user),
+        PinCode(pageController: _controller, user: _user),
+        PinCode(pageController: _controller, user: _user),
         ScratchScreen(pageController: _controller, user: _user),
       ],
     );

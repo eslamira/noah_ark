@@ -7,7 +7,7 @@ import 'package:tiny_widgets/tiny_widgets.dart';
 class PersonalInfo extends StatefulWidget {
   final PageController pageController;
   final UserModel user;
-  PersonalInfo({this.pageController, @required this.user});
+  PersonalInfo({@required this.pageController, @required this.user});
   @override
   _PersonalInfoState createState() => _PersonalInfoState();
 }

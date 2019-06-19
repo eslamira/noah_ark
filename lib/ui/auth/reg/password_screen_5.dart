@@ -6,7 +6,7 @@ import 'package:tiny_widgets/tiny_widgets.dart';
 class PasswordScreen extends StatefulWidget {
   final PageController pageController;
   final UserModel user;
-  PasswordScreen({this.pageController, @required this.user});
+  PasswordScreen({@required this.pageController, @required this.user});
   @override
   _PasswordScreenState createState() => _PasswordScreenState();
 }

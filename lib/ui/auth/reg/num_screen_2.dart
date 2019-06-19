@@ -7,7 +7,7 @@ import 'package:tiny_widgets/tiny_widgets.dart';
 class NumberScreen extends StatefulWidget {
   final PageController pageController;
   final UserModel user;
-  NumberScreen({this.pageController, @required this.user});
+  NumberScreen({@required this.pageController, @required this.user});
   @override
   _NumberScreenState createState() => _NumberScreenState();
 }
