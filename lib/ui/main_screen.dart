@@ -115,14 +115,14 @@ class _MainScreenState extends State<MainScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   TinyContainer(
-                    text: "0", // Ava. Ads
+                    text: "${_adList.length}", // Ava. Ads
                     backgroundColor: Colors.white24,
                     maxWidth: _size.width * 0.2,
                     textColor: Colors.white,
                     fontSize: 16,
                   ),
                   TinyContainer(
-                    text: "${_adList.length}", // Watched Ads
+                    text: "0", // Watched Ads
                     backgroundColor: Colors.white24,
                     maxWidth: _size.width * 0.2,
                     textColor: Colors.white,
