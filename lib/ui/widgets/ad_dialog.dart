@@ -43,6 +43,7 @@ class _AdDialogState extends State<AdDialog> {
     await Future.delayed(Duration(seconds: 2), () {
       // TODO: Implement DB Reward and remove from list;
       print("Rwarded Ad ^^");
+      Navigator.of(context).pop();
     });
   }
 
@@ -75,9 +76,9 @@ class _AdDialogState extends State<AdDialog> {
       onWillPop: () async {
         if (_rewarded) {
           await _rewardAndClose();
-          return true;
+          return Future.value(false);
         } else {
-          return Future.value(_rewarded);
+          return Future.value(false);
         }
       },
       child: Material(
