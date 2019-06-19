@@ -2,8 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:noah_ark/ui/common/common.dart';
-import 'package:tiny_widgets/tiny_widgets.dart';
 import 'package:noah_ark/utils/auth_client.dart';
+import 'package:tiny_widgets/tiny_widgets.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -81,6 +81,7 @@ class _LoginState extends State<Login> {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextField(
+                  obscureText: true,
                   controller: _passController,
                   style: Theme.of(context).textTheme.display1,
                 ),
