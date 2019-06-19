@@ -84,53 +84,6 @@ class DatabaseClient {
     return c;
   }
 
-//  Future<AdModel> getAd(String city, String gender, String age) async {
-//    return await _db
-//        .reference()
-//        .child("ads/specific")
-//        .child("${city}_${gender}_$age")
-//        .once()
-//        .then((snap1) async {
-//      if (snap1.value == null ||
-//          !(DateTime.now().millisecondsSinceEpoch >= snap1.value['startDate'] &&
-//              DateTime.now().millisecondsSinceEpoch <=
-//                  snap1.value['endDate'])) {
-//        return await _db
-//            .reference()
-//            .child("ads/specific")
-//            .child("${city}_كلاهما_$age")
-//            .once()
-//            .then((snap2) async {
-//          if (snap2.value == null ||
-//              !(DateTime.now().millisecondsSinceEpoch >=
-//                      snap2.value['startDate'] &&
-//                  DateTime.now().millisecondsSinceEpoch <=
-//                      snap2.value['endDate'])) {
-//            return await _db
-//                .reference()
-//                .child("ads/general/")
-//                .once()
-//                .then((snap3) async {
-//              if (snap3.value == null ||
-//                  !(DateTime.now().millisecondsSinceEpoch >=
-//                          snap3.value['startDate'] &&
-//                      DateTime.now().millisecondsSinceEpoch <=
-//                          snap3.value['endDate'])) {
-//                return null;
-//              } else {
-//                return AdModel.fromMap(snap3.value);
-//              }
-//            });
-//          } else {
-//            return AdModel.fromMap(snap2.value);
-//          }
-//        });
-//      } else {
-//        return AdModel.fromMap(snap1.value);
-//      }
-//    });
-//  }
-
   /// Checks if this [Phone_Number] Exists
   /// Returns [False] if doesn't Exist
   /// Returns [True] if Exist
@@ -239,59 +192,6 @@ class DatabaseClient {
 //    });
 //  }
 //
-//  /// Checks if this [National_ID] Exists
-//  /// Returns [False] if doesn't Exist
-//  /// Returns [True] if Exist
-//  Future<bool> isUserRegistered(String id) async {
-//    bool isRegistered;
-//    DatabaseReference userRef = _db.reference().child('users/');
-//    Query query = userRef.orderByChild("id").equalTo(id);
-//    await query.once().then((f) {
-//      f.value == null ? isRegistered = false : isRegistered = true;
-//    });
-//    return isRegistered;
-//  }
-//
-//  /// Creates New User in DB on registration Success
-//  /// Receives [UserModel] and send all it's Data to DB
-//  /// No Returns
-//  Future<void> createUser(UserModel user) async {
-//    String userID = await _authClient.isLoggedIn().then((u) => u.uid);
-//    DatabaseReference userRef = _dbUsers.reference().child('users/$userID');
-//    await userRef.set({
-//      'pin': "${user.pin}",
-//      'id': "${user.id}",
-//      'num': "${user.num}",
-//      'name': "${user.name}",
-//      'gen': "${user.gender}",
-//      'ref': "${user.referer}",
-//      'refid': "${user.refererID}",
-//      'cash': 0,
-//      'level': 0,
-//      'directCounter': 0,
-//      'unDirectCounter': 0,
-//      'secondaryCounter': 0,
-//      'subSecondaryCounter': 0,
-//      'totalPaid': 0,
-//      'isActive': false,
-//      'isAgent': false,
-//      'isDefined': false,
-//      'isPaid': false,
-//      'isDisabled': false,
-//      'isPending': false,
-//      'lastReset': 0,
-//      'created At': ServerValue.timestamp,
-//      'addr': [
-//        "${user.userAddress.homeNum}",
-//        "${user.userAddress.streetName}",
-//        "${user.userAddress.state}",
-//        "${user.userAddress.city}",
-//      ],
-//      'bir': "${user.userBirth.day}/${user.userBirth.month}",
-//      'biry': "${user.userBirth.year}",
-//    });
-//  }
-//
 //  /// Returns [UserModel] of [CurrentUser]
 //  /// Return [Exception] if not Logged In
 //  Future<UserModel> retrieveUserData() async {
@@ -303,44 +203,6 @@ class DatabaseClient {
 //    });
 //  }
 //
-//  Future<String> defaultPass() async {
-//    String pass;
-//    DatabaseReference passRef =
-//        _db.reference().child('config/accountSec/password');
-//    await passRef.once().then((f) {
-//      pass = f.value;
-//    });
-//    return pass;
-//  }
-//
-//  Future<int> useScratch(String scratch) async {
-//    String userID = await _authClient.isLoggedIn().then((u) => u.uid);
-//    if (userID == null) throw Exception("User NOT Logged In");
-//
-//    int newPrice;
-//    String error;
-//
-//    DatabaseReference scratchRef = _db.reference().child('scratches/$scratch');
-//    await scratchRef.runTransaction((MutableData transaction) async {
-//      if (transaction.value == null) {
-//        error = "Doesn't Exist";
-//      } else if (transaction.value['used'] == true) {
-//        error = "Used Before";
-//      } else {
-//        error = null;
-//        transaction.value['used'] = true;
-//        transaction.value['uid'] = "$userID";
-//        transaction.value['usedDate'] = ServerValue.timestamp;
-//        newPrice = transaction.value['price'];
-//      }
-//      return transaction;
-//    }).then((_) async {
-//      if (error != null) {
-//        throw Exception("$error");
-//      }
-//    });
-//    return newPrice;
-//  }
 //
 //  /// Retrieves all [ScratchModel]s From DB
 //  /// Returns List of [ScratchCard]s
