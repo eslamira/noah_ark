@@ -14,11 +14,11 @@ class NoahScaffold extends StatelessWidget {
     this.bottomNavigationBar,
   }) : super(key: key);
 
-  _onExitTapHandler() async {
+  _onExitTapHandler(BuildContext context) async {
     AuthClient _auth = AuthClient.internal();
     if (await _auth.isLoggedIn() != null) {
       await _auth.signOut();
-      // TODO:(eslamira) pop all and nav to welcome
+      Navigator.of(context).pushNamedAndRemoveUntil('/auth', (route) => false);
     } else {
       exit(0);
     }
@@ -34,7 +34,7 @@ class NoahScaffold extends StatelessWidget {
                 Icons.power_settings_new,
                 color: Colors.black,
               ),
-              onPressed: () => _onExitTapHandler(),
+              onPressed: () => _onExitTapHandler(context),
             ),
             title: Align(
               alignment: Alignment.centerLeft,
