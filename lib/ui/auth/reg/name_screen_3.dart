@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tiny_widgets/tiny_widgets.dart';
 import 'package:noah_ark/models/user_model.dart';
 import 'package:noah_ark/ui/widgets/noah_container.dart';
 
@@ -44,7 +45,7 @@ class _NameScreenState extends State<NameScreen> {
             Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-                NoahContainer(
+                TinyContainer(
                   maxWidth: MediaQuery.of(context).size.width * 0.45,
                   maxHeight: MediaQuery.of(context).size.width * 0.12,
                   text: 'الأسم الكامل',
@@ -54,7 +55,7 @@ class _NameScreenState extends State<NameScreen> {
             ),
             Column(
               children: <Widget>[
-                NoahContainer(
+                TinyContainer(
                   maxWidth: MediaQuery.of(context).size.width * 0.45,
                   maxHeight: MediaQuery.of(context).size.width * 0.12,
                   backgroundColor: Colors.grey[900],
@@ -71,7 +72,7 @@ class _NameScreenState extends State<NameScreen> {
                   ),
                 ),
                 Padding(padding: EdgeInsets.only(bottom: 16.0)),
-                NoahContainer(
+                TinyContainer(
                   maxWidth: MediaQuery.of(context).size.width * 0.45,
                   maxHeight: MediaQuery.of(context).size.width * 0.12,
                   backgroundColor: Colors.grey[900],
@@ -88,7 +89,7 @@ class _NameScreenState extends State<NameScreen> {
                   ),
                 ),
                 Padding(padding: EdgeInsets.only(bottom: 16.0)),
-                NoahContainer(
+                TinyContainer(
                   maxWidth: MediaQuery.of(context).size.width * 0.45,
                   maxHeight: MediaQuery.of(context).size.width * 0.12,
                   backgroundColor: Colors.grey[900],
@@ -105,7 +106,7 @@ class _NameScreenState extends State<NameScreen> {
                   ),
                 ),
                 Padding(padding: EdgeInsets.only(bottom: 16.0)),
-                NoahContainer(
+                TinyContainer(
                   maxWidth: MediaQuery.of(context).size.width * 0.45,
                   maxHeight: MediaQuery.of(context).size.width * 0.12,
                   backgroundColor: Colors.grey[900],
@@ -126,7 +127,7 @@ class _NameScreenState extends State<NameScreen> {
           ],
         ),
         Padding(padding: EdgeInsets.only(bottom: 24.0)),
-        NoahContainer(
+        TinyContainer(
           onTap: (_fNameController.text.length > 1 &&
                   _sNameController.text.length > 1 &&
                   _tNameController.text.length > 1 &&
@@ -145,7 +146,7 @@ class _NameScreenState extends State<NameScreen> {
           fontWeight: FontWeight.bold,
         ),
         Padding(padding: EdgeInsets.only(bottom: 24.0)),
-        NoahContainer(
+        TinyContainer(
           maxWidth: MediaQuery.of(context).size.width * 0.9,
           maxHeight: MediaQuery.of(context).size.width * 0.12,
           backgroundColor: Colors.grey[900],

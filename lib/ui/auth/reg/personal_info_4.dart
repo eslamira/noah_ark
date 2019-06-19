@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:noah_ark/models/user_model.dart';
 import 'package:noah_ark/ui/widgets/noah_container.dart';
 import 'package:noah_ark/utils/database_client.dart';
+import 'package:tiny_widgets/tiny_widgets.dart';
 
 class PersonalInfo extends StatefulWidget {
   final PageController pageController;
@@ -71,7 +72,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              NoahContainer(
+              TinyContainer(
                 onTap: () => _datePicker(context),
                 text: "تاريخ الميلاد",
                 backgroundColor: Color(0xFF6D6DFF),
@@ -79,7 +80,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                 textColor: Colors.white,
                 fontSize: 16,
               ),
-              NoahContainer(
+              TinyContainer(
                 onTap: () => _datePicker(context),
                 text: _datePicked == null
                     ? " "
@@ -99,7 +100,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              NoahContainer(
+              TinyContainer(
                 child: DropdownButtonHideUnderline(
                   child: DropdownButton<String>(
                     onChanged: (val) {
@@ -137,7 +138,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                 textColor: Colors.white,
                 fontSize: 16,
               ),
-              NoahContainer(
+              TinyContainer(
                 text: _selectedGender ?? " ",
                 backgroundColor: Colors.white24,
                 maxWidth: _size.width * 0.4,
@@ -152,7 +153,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              NoahContainer(
+              TinyContainer(
                 child: DropdownButtonHideUnderline(
                   child: DropdownButton<String>(
                     onChanged: (val) {
@@ -190,7 +191,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                 textColor: Colors.white,
                 fontSize: 16,
               ),
-              NoahContainer(
+              TinyContainer(
                 text: _selectedCity ?? " ",
                 backgroundColor: Colors.white24,
                 maxWidth: _size.width * 0.4,
@@ -200,6 +201,14 @@ class _PersonalInfoState extends State<PersonalInfo> {
             ],
           ),
         ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: TinyContainer(
+            text: "المرحلة التالية",
+            backgroundColor: Color(0xFFcb3b3b),
+            maxWidth: _size.width * 0.9,
+            textColor: Colors.white,
+            fontSize: 16,
         InkWell(
           onTap: (_selectedCity != null &&
                   _selectedGender != null &&
@@ -219,7 +228,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
         ),
         Padding(
           padding: const EdgeInsets.all(8.0),
-          child: NoahContainer(
+          child: TinyContainer(
             text: _error ?? " ",
             backgroundColor: Colors.white24,
             maxWidth: _size.width * 0.9,

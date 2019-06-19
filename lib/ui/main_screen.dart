@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:noah_ark/ui/widgets/noah_container.dart';
 import 'package:noah_ark/ui/widgets/noah_scaffold.dart';
+import 'package:tiny_widgets/tiny_widgets.dart';
 
 class MainScreen extends StatefulWidget {
   @override
@@ -22,14 +22,14 @@ class _MainScreenState extends State<MainScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  NoahContainer(
+                  TinyContainer(
                     text: "رصيد الحساب",
                     backgroundColor: Colors.pinkAccent,
                     maxWidth: _size.width * 0.4,
                     textColor: Colors.black,
                     fontSize: 14,
                   ),
-                  NoahContainer(
+                  TinyContainer(
                     text: "الراتب التالي",
                     backgroundColor: Colors.pinkAccent,
                     maxWidth: _size.width * 0.4,
@@ -44,14 +44,14 @@ class _MainScreenState extends State<MainScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  NoahContainer(
+                  TinyContainer(
                     text: "0",
                     backgroundColor: Colors.white24,
                     maxWidth: _size.width * 0.2,
                     textColor: Colors.white,
                     fontSize: 16,
                   ),
-                  NoahContainer(
+                  TinyContainer(
                     text: "0",
                     backgroundColor: Colors.white24,
                     maxWidth: _size.width * 0.2,
@@ -66,14 +66,14 @@ class _MainScreenState extends State<MainScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  NoahContainer(
+                  TinyContainer(
                     text: "الاعلانات المتاحة",
                     backgroundColor: Color(0xFF6D6DFF),
                     maxWidth: _size.width * 0.4,
                     textColor: Colors.white,
                     fontSize: 16,
                   ),
-                  NoahContainer(
+                  TinyContainer(
                     text: "عدد المشاهدة",
                     backgroundColor: Color(0xFF6D6DFF),
                     maxWidth: _size.width * 0.4,
@@ -88,14 +88,14 @@ class _MainScreenState extends State<MainScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  NoahContainer(
+                  TinyContainer(
                     text: "0",
                     backgroundColor: Colors.white24,
                     maxWidth: _size.width * 0.2,
                     textColor: Colors.white,
                     fontSize: 16,
                   ),
-                  NoahContainer(
+                  TinyContainer(
                     text: "0",
                     backgroundColor: Colors.white24,
                     maxWidth: _size.width * 0.2,
@@ -111,7 +111,7 @@ class _MainScreenState extends State<MainScreen> {
                 width: _size.width * 0.9,
                 color: Colors.white24,
                 alignment: Alignment.center,
-                child: NoahContainer(
+                child: TinyContainer(
                   text: "شاهد",
                   backgroundColor: Colors.redAccent,
                   maxWidth: _size.width * 0.25,
@@ -122,7 +122,7 @@ class _MainScreenState extends State<MainScreen> {
             ),
             Padding(
               padding: const EdgeInsets.only(top: 20),
-              child: NoahContainer(
+              child: TinyContainer(
                 text: "يتوقف تنزيل الراتب علي مشاهدة كافة الاعلانات المتاحة",
                 backgroundColor: Colors.white24,
                 maxWidth: _size.width * 0.9,
@@ -135,14 +135,14 @@ class _MainScreenState extends State<MainScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  NoahContainer(
+                  TinyContainer(
                     text: "إضافة رصيد",
                     backgroundColor: Color(0xFF56a554),
                     maxWidth: _size.width * 0.4,
                     textColor: Colors.white,
                     fontSize: 16,
                   ),
-                  NoahContainer(
+                  TinyContainer(
                     text: "سكراتش كارد",
                     backgroundColor: Color(0xFF56a554),
                     maxWidth: _size.width * 0.4,
@@ -157,14 +157,14 @@ class _MainScreenState extends State<MainScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  NoahContainer(
+                  TinyContainer(
                     text: "برنامج الإحالة",
                     backgroundColor: Color(0xFF56a554),
                     maxWidth: _size.width * 0.4,
                     textColor: Colors.white,
                     fontSize: 16,
                   ),
-                  NoahContainer(
+                  TinyContainer(
                     text: "سجل المشتركين",
                     backgroundColor: Color(0xFF56a554),
                     maxWidth: _size.width * 0.4,
@@ -175,18 +175,18 @@ class _MainScreenState extends State<MainScreen> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 20),
+              padding: const EdgeInsets.only(top: 20, bottom: 20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  NoahContainer(
+                  TinyContainer(
                     text: "الملف الشخصي",
                     backgroundColor: Color(0xFF56a554),
                     maxWidth: _size.width * 0.4,
                     textColor: Colors.white,
                     fontSize: 16,
                   ),
-                  NoahContainer(
+                  TinyContainer(
                     text: "أمن الحساب",
                     backgroundColor: Color(0xFF56a554),
                     maxWidth: _size.width * 0.4,
