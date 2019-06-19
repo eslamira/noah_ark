@@ -5,6 +5,7 @@ class UserModel {
   UserBirth userBirth;
   String userGender;
   String userCity;
+  String userPass;
   String userPinCode;
 
   UserModel() {
@@ -14,6 +15,7 @@ class UserModel {
     userBirth = UserBirth();
     userGender = '';
     userCity = '';
+    userPass = '';
     userPinCode = '';
   }
 

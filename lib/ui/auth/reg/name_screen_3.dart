@@ -16,18 +16,41 @@ class _NameScreenState extends State<NameScreen> {
   final TextEditingController _sNameController = TextEditingController();
   final TextEditingController _tNameController = TextEditingController();
   final TextEditingController _foNameController = TextEditingController();
+  bool _isArabic = false;
   String _error = ' ';
+
+  void _validator(val) {
+    if (val.contains(RegExp('^[\u0621-\u064A ]+\$'))) {
+      if (val.text.length >= 1) {
+        if (mounted)
+          setState(() {
+            _isArabic = true;
+          });
+      }
+    } else {
+      if (mounted)
+        setState(() {
+          _isArabic = false;
+        });
+    }
+  }
 
   _validateAndNext() async {
     try {
-      Common.internal().loading(context);
-      widget.user.userName.firstName = _fNameController.text;
-      widget.user.userName.secondName = _sNameController.text;
-      widget.user.userName.thirdName = _tNameController.text;
-      widget.user.userName.fourthName = _foNameController.text;
-      Navigator.of(context).pop();
-      widget.pageController
-          .nextPage(duration: Duration(milliseconds: 300), curve: Curves.ease);
+      if (_isArabic) {
+        Common.internal().loading(context);
+        widget.user.userName.firstName = _fNameController.text;
+        widget.user.userName.secondName = _sNameController.text;
+        widget.user.userName.thirdName = _tNameController.text;
+        widget.user.userName.fourthName = _foNameController.text;
+        Navigator.of(context).pop();
+        widget.pageController.nextPage(
+            duration: Duration(milliseconds: 300), curve: Curves.ease);
+      } else {
+        setState(() {
+          _error = 'برجاء كتابة الاسم باللغة العربية فقط';
+        });
+      }
     } catch (e) {
       Navigator.of(context).pop();
       setState(() {
@@ -66,9 +89,7 @@ class _NameScreenState extends State<NameScreen> {
                     padding: const EdgeInsets.all(8.0),
                     child: TextField(
                       controller: _fNameController,
-                      onChanged: (v) {
-                        setState(() {});
-                      },
+                      onChanged: _validator,
                       style: Theme.of(context).textTheme.display1,
                     ),
                   ),
@@ -82,9 +103,7 @@ class _NameScreenState extends State<NameScreen> {
                     padding: const EdgeInsets.all(8.0),
                     child: TextField(
                       controller: _sNameController,
-                      onChanged: (v) {
-                        setState(() {});
-                      },
+                      onChanged: _validator,
                       style: Theme.of(context).textTheme.display1,
                     ),
                   ),
@@ -98,9 +117,7 @@ class _NameScreenState extends State<NameScreen> {
                     padding: const EdgeInsets.all(8.0),
                     child: TextField(
                       controller: _tNameController,
-                      onChanged: (v) {
-                        setState(() {});
-                      },
+                      onChanged: _validator,
                       style: Theme.of(context).textTheme.display1,
                     ),
                   ),
@@ -114,9 +131,7 @@ class _NameScreenState extends State<NameScreen> {
                     padding: const EdgeInsets.all(8.0),
                     child: TextField(
                       controller: _foNameController,
-                      onChanged: (v) {
-                        setState(() {});
-                      },
+                      onChanged: _validator,
                       style: Theme.of(context).textTheme.display1,
                     ),
                   ),
