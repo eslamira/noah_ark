@@ -37,10 +37,6 @@ class _ScratchScreenState extends State<ScratchScreen> {
         _error = 'البطاقة غير مسجلة بالنظام';
       });
     } else {
-      print(_scratchModel.scratchId);
-      print(_scratchModel.used);
-      print(_scratchModel.val);
-      print(_scratchModel.scratchNum);
       if (_scratchModel.used) {
         Navigator.of(context).pop();
         setState(() {
@@ -49,6 +45,8 @@ class _ScratchScreenState extends State<ScratchScreen> {
       } else {
         if (_scratchModel.val >= 20) {
           widget.user.cash = _scratchModel.val;
+          await DatabaseClient.internal()
+              .useScratch(_scratchController.text, widget.user.userNum);
           await DatabaseClient.internal().createAccount(widget.user);
           Navigator.of(context).pushReplacement(MaterialPageRoute(
               builder: (BuildContext context) =>
@@ -61,7 +59,7 @@ class _ScratchScreenState extends State<ScratchScreen> {
         }
       }
     }
-    Navigator.of(context).pop();
+//    Navigator.of(context).pop();
 //    } catch (e) {
 //      Navigator.of(context).pop();
 //      setState(() {

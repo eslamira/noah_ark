@@ -1,6 +1,5 @@
 class ScratchModel {
   String scratchId;
-  String scratchNum;
   int val;
   bool used;
   String userId;
@@ -8,7 +7,6 @@ class ScratchModel {
 
   ScratchModel() {
     scratchId = '';
-    scratchNum = '';
     val = 0;
     used = false;
     userId = '';
@@ -16,9 +14,8 @@ class ScratchModel {
   }
 
   ScratchModel.fromMap(this.scratchId, Map m) {
-    scratchNum = m['id'];
     val = m['val'];
-    used = m['used'];
+    used = m['used'] ?? false;
     userId = m['uid'];
     userNum = m['num'];
   }

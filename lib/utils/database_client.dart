@@ -99,13 +99,7 @@ class DatabaseClient {
 
   Future<ScratchModel> getScratch(String scratch) async {
     ScratchModel scratchModel;
-    await _db
-        .reference()
-        .child('scratches/')
-        .orderByChild("id")
-        .equalTo(scratch)
-        .once()
-        .then((d) {
+    await _db.reference().child('scratches/$scratch').once().then((d) {
       if (d.value != null) {
         scratchModel = ScratchModel.fromMap(d.key, d.value);
       }
@@ -113,13 +107,10 @@ class DatabaseClient {
     return scratchModel;
   }
 
-  Future<void> useScratch(ScratchModel scratch, String userNum) async {
+  Future<void> useScratch(String scratchId, String userNum) async {
 //    String uid = await AuthClient.internal().isLoggedIn().then((f) => f.uid);
     String error;
-    await _db
-        .reference()
-        .child('scratches/${scratch.scratchId}/')
-        .runTransaction((t) {
+    await _db.reference().child('scratches/$scratchId').runTransaction((t) {
       if (t.value == null) {
         error = "Doesn't Exist";
       } else if (t.value['used'] == true) {
