@@ -67,7 +67,11 @@ class _LoginState extends State<Login> {
                 padding: const EdgeInsets.all(8.0),
                 child: TextField(
                   controller: _numController,
+                  onChanged: (v) {
+                    setState(() {});
+                  },
                   keyboardType: TextInputType.number,
+                  maxLength: 11,
                   style: Theme.of(context).textTheme.display1,
                 ),
               ),
@@ -91,8 +95,11 @@ class _LoginState extends State<Login> {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextField(
-                  obscureText: true,
                   controller: _passController,
+                  obscureText: true,
+                  onChanged: (v) {
+                    setState(() {});
+                  },
                   style: Theme.of(context).textTheme.display1,
                 ),
               ),

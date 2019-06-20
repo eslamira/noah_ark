@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:noah_ark/models/scratch_model.dart';
 import 'package:noah_ark/models/user_model.dart';
 import 'package:noah_ark/ui/common/common.dart';
-import 'package:noah_ark/ui/common/success.dart';
 import 'package:noah_ark/utils/auth_client.dart';
 import 'package:noah_ark/utils/database_client.dart';
 import 'package:tiny_widgets/tiny_widgets.dart';
@@ -50,9 +49,9 @@ class _ScratchScreenState extends State<ScratchScreen> {
                 .useScratch(_scratchController.text, widget.user.userNum)) {
               await DatabaseClient.internal().createAccount(widget.user);
               await AuthClient.internal().signOut();
-              Navigator.of(context).pushReplacement(MaterialPageRoute(
-                  builder: (BuildContext context) =>
-                      Success('تم فتح الحساب بنجاح', null, true)));
+              Navigator.of(context).pop();
+              widget.pageController.nextPage(
+                  duration: Duration(milliseconds: 300), curve: Curves.ease);
             } else {
               Navigator.of(context).pop();
               setState(() {
@@ -67,7 +66,6 @@ class _ScratchScreenState extends State<ScratchScreen> {
           }
         }
       }
-      Navigator.of(context).pop();
     } catch (e) {
       Navigator.of(context).pop();
       setState(() {

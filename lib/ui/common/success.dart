@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:noah_ark/ui/widgets/noah_scaffold.dart';
 
@@ -14,12 +16,12 @@ class _SuccessState extends State<Success> {
   @override
   void initState() {
     super.initState();
-//    Timer(Duration(seconds: 3), () async {
-//      widget.nav != null
-//          ? Navigator.of(context).pushReplacement(widget.nav)
-//          : Navigator.of(context)
-//              .pushNamedAndRemoveUntil('/auth', (route) => false);
-//    });
+    Timer(Duration(seconds: 3), () async {
+      widget.nav != null
+          ? Navigator.of(context).pushReplacement(widget.nav)
+          : Navigator.of(context)
+              .pushNamedAndRemoveUntil('/auth', (route) => false);
+    });
   }
 
   @override

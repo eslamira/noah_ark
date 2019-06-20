@@ -16,3 +16,17 @@ class AdModel {
     // not needed at all, we can filter on retrieving method
   }
 }
+
+class GeneralAdModel {
+  String link;
+  Duration duration;
+  DateTime startDateTime;
+  DateTime endDateTime;
+
+  GeneralAdModel.fromMap(Map m) {
+    link = m['link'];
+    duration = Duration(seconds: m['duration']);
+    startDateTime = DateTime.fromMillisecondsSinceEpoch(m['startDateTime']);
+    endDateTime = DateTime.fromMillisecondsSinceEpoch(m['endDateTime']);
+  }
+}

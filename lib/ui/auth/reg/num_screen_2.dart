@@ -26,8 +26,9 @@ class _NumberScreenState extends State<NumberScreen> {
     try {
       Common.internal().loading(context);
       if (_numController.text.length == 11) {
-        if (_numController.text.substring(0, 3) == '015') {
-          print(_numController.text.substring(0, 3));
+        if (_numController.text.substring(0, 3) != '010' ||
+            _numController.text.substring(0, 3) != '011' ||
+            _numController.text.substring(0, 3) != '012') {
           Navigator.of(context).pop();
           setState(() {
             _error = 'رقم الجوال غير صالح';

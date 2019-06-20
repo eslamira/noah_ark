@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:noah_ark/ui/ad_screen.dart';
 import 'package:noah_ark/ui/widgets/noah_scaffold.dart';
 import 'package:noah_ark/utils/auth_client.dart';
 import 'package:noah_ark/utils/database_client.dart';
@@ -84,7 +85,8 @@ class _PinCodeState extends State<PinCode> {
           onCodeSuccess: (val) {
             widget.onResume
                 ? Navigator.of(context).pop()
-                : Navigator.of(context).pushReplacementNamed('/ads');
+                : Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (BuildContext context) => AdScreen()));
           },
           onCodeFails: (val) {
             errorCounter++;
