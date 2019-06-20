@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:noah_ark/ui/widgets/noah_scaffold.dart';
 
 class Success extends StatefulWidget {
   final String msg;
@@ -24,30 +25,32 @@ class _SuccessState extends State<Success> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Icon(
-            Icons.check_circle_outline,
-            color: Colors.green,
-            size: 43,
-          ),
-          Padding(
-            padding: EdgeInsets.only(
-              top: MediaQuery.of(context).padding.top + 20,
+    return NoahScaffold(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Icon(
+              Icons.check_circle_outline,
+              color: Colors.green,
+              size: 43,
             ),
-          ),
-          Text(
-            "${widget.msg}",
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 16,
-              fontFamily: 'Hacen',
+            Padding(
+              padding: EdgeInsets.only(
+                top: MediaQuery.of(context).padding.top + 20,
+              ),
             ),
-          ),
-        ],
+            Text(
+              "${widget.msg}",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 16,
+                fontFamily: 'Hacen',
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

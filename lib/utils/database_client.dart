@@ -107,8 +107,9 @@ class DatabaseClient {
     return scratchModel;
   }
 
-  Future<void> useScratch(String scratchId, String userNum) async {
+  Future<bool> useScratch(String scratchId, String userNum) async {
 //    String uid = await AuthClient.internal().isLoggedIn().then((f) => f.uid);
+    bool _done = false;
     String error;
     await _db.reference().child('scratches/$scratchId').runTransaction((t) {
       if (t.value == null) {
@@ -122,9 +123,13 @@ class DatabaseClient {
       }
     }).then((_) async {
       if (error != null) {
+        _done = false;
         throw Exception("$error");
+      } else {
+        _done = true;
       }
     });
+    return _done;
   }
 
   Future<void> createAccount(UserModel user) async {

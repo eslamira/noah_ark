@@ -26,46 +26,52 @@ class _ScratchScreenState extends State<ScratchScreen> {
   }
 
   _checkScratchAndCreateAcc() async {
-//    try {
-    Common.internal().loading(context);
-    _scratchModel =
-        await DatabaseClient.internal().getScratch(_scratchController.text);
+    try {
+      Common.internal().loading(context);
+      _scratchModel =
+          await DatabaseClient.internal().getScratch(_scratchController.text);
 
-    if (_scratchModel == null) {
-      Navigator.of(context).pop();
-      setState(() {
-        _error = 'البطاقة غير مسجلة بالنظام';
-      });
-    } else {
-      if (_scratchModel.used) {
+      if (_scratchModel == null) {
         Navigator.of(context).pop();
         setState(() {
-          _error = 'البطاقة منتهية الصالحية';
+          _error = 'البطاقة غير مسجلة بالنظام';
         });
       } else {
-        if (_scratchModel.val >= 20) {
-          widget.user.cash = _scratchModel.val;
-          await DatabaseClient.internal()
-              .useScratch(_scratchController.text, widget.user.userNum);
-          await DatabaseClient.internal().createAccount(widget.user);
-          Navigator.of(context).pushReplacement(MaterialPageRoute(
-              builder: (BuildContext context) =>
-                  Success('تم فتح الحساب بنجاح', null)));
-        } else {
+        if (_scratchModel.used) {
           Navigator.of(context).pop();
           setState(() {
-            _error = 'قيمة البطاقة غير متوافقة مع قيمة رسوم فتح الحساب';
+            _error = 'البطاقة منتهية الصالحية';
           });
+        } else {
+          if (_scratchModel.val >= 20) {
+            widget.user.cash = _scratchModel.val;
+            if (await DatabaseClient.internal()
+                .useScratch(_scratchController.text, widget.user.userNum)) {
+              await DatabaseClient.internal().createAccount(widget.user);
+              Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (BuildContext context) =>
+                      Success('تم فتح الحساب بنجاح', null)));
+            } else {
+              Navigator.of(context).pop();
+              setState(() {
+                _error = 'حدث خطأ برجاء المحاولة مرة أخرى';
+              });
+            }
+          } else {
+            Navigator.of(context).pop();
+            setState(() {
+              _error = 'قيمة البطاقة غير متوافقة مع قيمة رسوم فتح الحساب';
+            });
+          }
         }
       }
+      Navigator.of(context).pop();
+    } catch (e) {
+      Navigator.of(context).pop();
+      setState(() {
+        _error = 'حدث خطأ برجاء المحاولة مرة أخرى';
+      });
     }
-//    Navigator.of(context).pop();
-//    } catch (e) {
-//      Navigator.of(context).pop();
-//      setState(() {
-//        _error = 'حدث خطأ برجاء المحاولة مرة أخرى';
-//      });
-//    }
   }
 
   @override
