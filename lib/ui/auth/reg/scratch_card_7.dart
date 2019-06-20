@@ -52,7 +52,7 @@ class _ScratchScreenState extends State<ScratchScreen> {
               await AuthClient.internal().signOut();
               Navigator.of(context).pushReplacement(MaterialPageRoute(
                   builder: (BuildContext context) =>
-                      Success('تم فتح الحساب بنجاح', null)));
+                      Success('تم فتح الحساب بنجاح', null, true)));
             } else {
               Navigator.of(context).pop();
               setState(() {

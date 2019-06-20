@@ -48,21 +48,21 @@ class NoahTheme {
         // Item Name
         color: Colors.white,
         fontSize: 16,
-        fontFamily: "NeusaNextPro",
+        fontFamily: "Hacen",
         fontWeight: FontWeight.w300,
       ),
       caption: TextStyle(
         // Item Price
         color: Colors.black,
         fontSize: 12,
-        fontFamily: "NeusaNextStd",
+        fontFamily: "Hacen",
         fontWeight: FontWeight.bold,
       ),
       display2: TextStyle(
         // Item Price
         color: Colors.white,
-        fontSize: 12,
-        fontFamily: "NeusaNextStd",
+        fontSize: 20,
+        fontFamily: "Hacen",
         fontWeight: FontWeight.bold,
       ),
       display3: TextStyle(

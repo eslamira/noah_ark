@@ -109,18 +109,25 @@ class DatabaseClient {
 
   Future<bool> useScratch(String scratchId, String userNum) async {
 //    String uid = await AuthClient.internal().isLoggedIn().then((f) => f.uid);
+    print(scratchId);
     bool _done = false;
     String error;
-    await _db.reference().child('scratches/$scratchId').runTransaction((t) {
-      if (t.value == null) {
-        error = "Doesn't Exist";
-      } else if (t.value['used'] == true) {
-        error = "Used Before";
-      } else {
-        t.value['used'] = true;
+    await _db
+        .reference()
+        .child('scratches/$scratchId')
+        .runTransaction((t) async {
+      if (t != null) {
+        if (t.value == null) {
+          error = "Doesn't Exist";
+        } else if (t.value['used'] == true) {
+          error = "Used Before";
+        } else {
+          t.value['used'] = true;
 //        t.value['uid'] = uid;
-        t.value['num'] = userNum;
+          t.value['num'] = userNum;
+        }
       }
+      return t;
     }).then((_) async {
       if (error != null) {
         _done = false;

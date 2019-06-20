@@ -136,6 +136,7 @@ class _MainScreenAuthState extends State<MainScreenAuth> {
                                     fit: BoxFit.scaleDown,
                                     child: Text(
                                       "تسجيل الدخول",
+                                      textScaleFactor: 1.0,
                                       style:
                                           Theme.of(context).textTheme.subhead,
                                     ),
@@ -162,6 +163,7 @@ class _MainScreenAuthState extends State<MainScreenAuth> {
                                     fit: BoxFit.scaleDown,
                                     child: Text(
                                       "فتح حساب",
+                                      textScaleFactor: 1.0,
                                       style:
                                           Theme.of(context).textTheme.subhead,
                                     ),
@@ -188,6 +190,7 @@ class _MainScreenAuthState extends State<MainScreenAuth> {
                                     fit: BoxFit.scaleDown,
                                     child: Text(
                                       "إستعادة الحساب",
+                                      textScaleFactor: 1.0,
                                       style:
                                           Theme.of(context).textTheme.subhead,
                                     ),
@@ -214,6 +217,7 @@ class _MainScreenAuthState extends State<MainScreenAuth> {
                                     fit: BoxFit.scaleDown,
                                     child: Text(
                                       "إتفاقية الإستخدام",
+                                      textScaleFactor: 1.0,
                                       style:
                                           Theme.of(context).textTheme.subhead,
                                     ),
