@@ -61,6 +61,7 @@ class NoahScaffold extends StatelessWidget {
               icon: Icon(
                 Icons.power_settings_new,
                 color: Colors.black,
+                size: 32,
               ),
               onPressed: () => _onExitTapHandler(context),
             ),
