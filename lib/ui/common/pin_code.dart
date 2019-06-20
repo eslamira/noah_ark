@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:noah_ark/models/user_model.dart';
 import 'package:noah_ark/ui/widgets/noah_scaffold.dart';
 import 'package:noah_ark/utils/auth_client.dart';
 import 'package:noah_ark/utils/database_client.dart';
@@ -8,13 +7,9 @@ import 'package:secure_pin_code/secure_pin_code.dart';
 import 'package:tiny_widgets/tiny_widgets.dart';
 
 class PinCode extends StatefulWidget {
-  final PageController pageController;
-  final UserModel user;
   final bool onResume;
 
   PinCode({
-    this.pageController,
-    this.user,
     this.onResume = false,
   });
 
@@ -34,24 +29,10 @@ class _PinCodeState extends State<PinCode> {
   }
 
   _initData() async {
-    if (widget.user != null) {
-      _correctPin = widget.user.userPinCode;
-    } else {
-      _correctPin = await DatabaseClient.internal().getUserPin();
-    }
+    _correctPin = await DatabaseClient.internal().getUserPin();
   }
 
-  _savePinAndNav(String pin) async {
-    if (pin.length != 4) {
-      if (mounted) setState(() => _error = 'رمز الأمان يجب ان يكون 4 ارقام');
-    } else {
-      widget.user.userPinCode = pin;
-      widget.pageController
-          .nextPage(duration: Duration(milliseconds: 300), curve: Curves.ease);
-    }
-  }
-
-  fuckOff(context) async {
+  _fuckOff(context) async {
     await AuthClient.internal().signOut();
     Navigator.of(context)
         .pushNamedAndRemoveUntil('/auth', (Route<dynamic> route) => false);
@@ -101,24 +82,16 @@ class _PinCodeState extends State<PinCode> {
           codeLength: 4,
           correctPin: _correctPin,
           onCodeSuccess: (val) {
-            if (widget.pageController != null) {
-              _savePinAndNav(val);
-            } else {
-              widget.onResume
-                  ? Navigator.of(context).pop()
-                  : Navigator.of(context).pushReplacementNamed('/ads');
-            }
+            widget.onResume
+                ? Navigator.of(context).pop()
+                : Navigator.of(context).pushReplacementNamed('/ads');
           },
           onCodeFails: (val) {
-            if (widget.pageController != null) {
-              _savePinAndNav(val);
-            } else {
-              errorCounter++;
-              if (mounted)
-                setState(() => _error = 'رمز الأمان غير صحيح\n'
-                    ' لقد استنفذت $errorCounter محاولة من 3 محاولات\n ');
-              if (errorCounter == 3) fuckOff(context);
-            }
+            errorCounter++;
+            if (mounted)
+              setState(() => _error = 'رمز الأمان غير صحيح\n'
+                  ' لقد استنفذت $errorCounter محاولة من 3 محاولات\n ');
+            if (errorCounter == 3) _fuckOff(context);
           },
         ),
       ),

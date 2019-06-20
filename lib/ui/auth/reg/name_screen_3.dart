@@ -30,7 +30,7 @@ class _NameScreenState extends State<NameScreen> {
 
   void _validator(val) {
     if (val.contains(RegExp('^[\u0621-\u064A ]+\$'))) {
-      if (val.text.length >= 1) {
+      if (val.length >= 1) {
         if (mounted)
           setState(() {
             _isArabic = true;
@@ -165,7 +165,7 @@ class _NameScreenState extends State<NameScreen> {
                   _foNameController.text.length > 1)
               ? Color(0xFFcb3b3b)
               : Colors.grey[800],
-          text: 'دخول',
+          text: 'المرحلة التالية',
           fontWeight: FontWeight.bold,
         ),
         Padding(padding: EdgeInsets.only(bottom: 24.0)),

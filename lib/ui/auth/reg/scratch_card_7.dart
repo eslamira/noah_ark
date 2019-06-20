@@ -26,42 +26,48 @@ class _ScratchScreenState extends State<ScratchScreen> {
   }
 
   _checkScratchAndCreateAcc() async {
-    try {
-      Common.internal().loading(context);
-      _scratchModel =
-          await DatabaseClient.internal().getScratch(_scratchController.text);
-      if (_scratchModel == null) {
-        Navigator.of(context).pop();
-        setState(() {
-          _error = 'البطاقة غير مسجلة بالنظام';
-        });
-      } else {
-        if (_scratchModel.used) {
-          Navigator.of(context).pop();
-          setState(() {
-            _error = 'البطاقة منتهية الصالحية';
-          });
-        } else {
-          if (_scratchModel.val >= 20) {
-            widget.user.cash = _scratchModel.val;
-            await DatabaseClient.internal().createAccount(widget.user);
-            Navigator.of(context).pushReplacement(MaterialPageRoute(
-                builder: (BuildContext context) =>
-                    Success('تم فتح الحساب بنجاح', null)));
-          } else {
-            Navigator.of(context).pop();
-            setState(() {
-              _error = 'قيمة البطاقة غير متوافقة مع قيمة رسوم فتح الحساب';
-            });
-          }
-        }
-      }
-    } catch (e) {
+//    try {
+    Common.internal().loading(context);
+    _scratchModel =
+        await DatabaseClient.internal().getScratch(_scratchController.text);
+
+    if (_scratchModel == null) {
       Navigator.of(context).pop();
       setState(() {
-        _error = 'حدث خطأ برجاء المحاولة مرة أخرى';
+        _error = 'البطاقة غير مسجلة بالنظام';
       });
+    } else {
+      print(_scratchModel.scratchId);
+      print(_scratchModel.used);
+      print(_scratchModel.val);
+      print(_scratchModel.scratchNum);
+      if (_scratchModel.used) {
+        Navigator.of(context).pop();
+        setState(() {
+          _error = 'البطاقة منتهية الصالحية';
+        });
+      } else {
+        if (_scratchModel.val >= 20) {
+          widget.user.cash = _scratchModel.val;
+          await DatabaseClient.internal().createAccount(widget.user);
+          Navigator.of(context).pushReplacement(MaterialPageRoute(
+              builder: (BuildContext context) =>
+                  Success('تم فتح الحساب بنجاح', null)));
+        } else {
+          Navigator.of(context).pop();
+          setState(() {
+            _error = 'قيمة البطاقة غير متوافقة مع قيمة رسوم فتح الحساب';
+          });
+        }
+      }
     }
+    Navigator.of(context).pop();
+//    } catch (e) {
+//      Navigator.of(context).pop();
+//      setState(() {
+//        _error = 'حدث خطأ برجاء المحاولة مرة أخرى';
+//      });
+//    }
   }
 
   @override
@@ -86,6 +92,9 @@ class _ScratchScreenState extends State<ScratchScreen> {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextField(
+                onChanged: (v) {
+                  setState(() {});
+                },
                 controller: _scratchController,
                 style: Theme.of(context).textTheme.display1,
               ),

@@ -103,7 +103,7 @@ class _NumberScreenState extends State<NumberScreen> {
           backgroundColor: (_numController.text.length > 1)
               ? Color(0xFFcb3b3b)
               : Colors.grey[800],
-          text: 'دخول',
+          text: 'المرحلة التالية',
           fontWeight: FontWeight.bold,
         ),
         Padding(padding: EdgeInsets.only(bottom: 24.0)),

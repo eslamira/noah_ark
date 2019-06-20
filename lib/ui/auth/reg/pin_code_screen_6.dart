@@ -3,44 +3,44 @@ import 'package:noah_ark/models/user_model.dart';
 import 'package:noah_ark/ui/common/common.dart';
 import 'package:tiny_widgets/tiny_widgets.dart';
 
-class PasswordScreen extends StatefulWidget {
+class PinCodeScreen extends StatefulWidget {
   final PageController pageController;
   final UserModel user;
-  PasswordScreen({@required this.pageController, @required this.user});
+  PinCodeScreen({@required this.pageController, @required this.user});
   @override
-  _PasswordScreenState createState() => _PasswordScreenState();
+  _PinCodeScreenState createState() => _PinCodeScreenState();
 }
 
-class _PasswordScreenState extends State<PasswordScreen> {
-  final TextEditingController _pass1Controller = TextEditingController();
-  final TextEditingController _pass2Controller = TextEditingController();
+class _PinCodeScreenState extends State<PinCodeScreen> {
+  final TextEditingController _pin1Controller = TextEditingController();
+  final TextEditingController _pin2Controller = TextEditingController();
   String _error;
 
   @override
   void dispose() {
-    _pass1Controller?.dispose();
-    _pass2Controller?.dispose();
+    _pin1Controller?.dispose();
+    _pin2Controller?.dispose();
     super.dispose();
   }
 
   _validateAndNext() async {
     Common.internal().loading(context);
-    if (_pass1Controller.text.length > 7 && _pass2Controller.text.length > 7) {
-      if (_pass1Controller.text == _pass2Controller.text) {
-        widget.user.userPass = _pass1Controller.text;
+    if (_pin1Controller.text.length == 4 && _pin2Controller.text.length == 4) {
+      if (_pin1Controller.text == _pin2Controller.text) {
+        widget.user.userPinCode = _pin1Controller.text;
         Navigator.of(context).pop();
         widget.pageController.nextPage(
             duration: Duration(milliseconds: 300), curve: Curves.ease);
       } else {
         Navigator.of(context).pop();
         setState(() {
-          _error = 'تأكد من تطابق كلمة المرور';
+          _error = 'تأكد من تطابق التأكيد الامنى';
         });
       }
     } else {
       Navigator.of(context).pop();
       setState(() {
-        _error = 'كلمة المرور يجب ان لا تقل عن 8 حروف لاتينية وأرقام';
+        _error = 'التأكيد الأمنى يجب ان يتكون من 4 ارقام';
       });
     }
   }
@@ -56,7 +56,7 @@ class _PasswordScreenState extends State<PasswordScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               TinyContainer(
-                text: "كلمة المرور",
+                text: "التأكيد الأمنى",
                 backgroundColor: Color(0xFF6D6DFF),
                 maxWidth: _size.width * 0.4,
                 textColor: Colors.white,
@@ -70,8 +70,10 @@ class _PasswordScreenState extends State<PasswordScreen> {
                     onChanged: (v) {
                       setState(() {});
                     },
-                    controller: _pass1Controller,
+                    controller: _pin1Controller,
                     obscureText: true,
+                    maxLength: 4,
+                    keyboardType: TextInputType.number,
                     style: Theme.of(context).textTheme.display1,
                   ),
                 ),
@@ -89,7 +91,7 @@ class _PasswordScreenState extends State<PasswordScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               TinyContainer(
-                text: "إعادة كلمة المرور",
+                text: "إعادة التأكيد الأمنى",
                 backgroundColor: Color(0xFF6D6DFF),
                 maxWidth: _size.width * 0.4,
                 fontWeight: FontWeight.bold,
@@ -103,8 +105,10 @@ class _PasswordScreenState extends State<PasswordScreen> {
                     onChanged: (v) {
                       setState(() {});
                     },
-                    controller: _pass2Controller,
+                    controller: _pin2Controller,
                     obscureText: true,
+                    maxLength: 4,
+                    keyboardType: TextInputType.number,
                     style: Theme.of(context).textTheme.display1,
                   ),
                 ),
@@ -117,16 +121,16 @@ class _PasswordScreenState extends State<PasswordScreen> {
           ),
         ),
         InkWell(
-          onTap: (_pass1Controller.text.length > 1 &&
-                  _pass2Controller.text.length > 1)
+          onTap: (_pin1Controller.text.length > 1 &&
+                  _pin2Controller.text.length > 1)
               ? () => _validateAndNext()
               : null,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: TinyContainer(
               text: "المرحلة التالية",
-              backgroundColor: (_pass1Controller.text.length > 1 &&
-                      _pass2Controller.text.length > 1)
+              backgroundColor: (_pin1Controller.text.length > 1 &&
+                      _pin2Controller.text.length > 1)
                   ? Color(0xFFcb3b3b)
                   : Colors.grey[800],
               maxWidth: _size.width * 0.9,
