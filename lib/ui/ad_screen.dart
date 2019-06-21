@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:noah_ark/models/ad_model.dart';
+import 'package:noah_ark/ui/common/common.dart';
 import 'package:noah_ark/utils/database_client.dart';
 
 class AdScreen extends StatefulWidget {
@@ -11,7 +12,8 @@ class AdScreen extends StatefulWidget {
 
 class _AdScreenState extends State<AdScreen> {
   GeneralAdModel _generalAdModel;
-  String image;
+  bool _isLoading = true;
+
   @override
   void initState() {
     super.initState();
@@ -20,6 +22,12 @@ class _AdScreenState extends State<AdScreen> {
 
   _initData() async {
     _generalAdModel = await DatabaseClient.internal().getGeneralAd();
+    print(_generalAdModel.duration);
+    print(_generalAdModel.link);
+    print(_generalAdModel.startDateTime);
+    print(_generalAdModel.endDateTime);
+    print(_generalAdModel.endDateTime.difference(DateTime.now()).isNegative);
+    print(DateTime.now().difference(_generalAdModel.startDateTime).isNegative);
     if (_generalAdModel == null) {
       Navigator.of(context).pushNamedAndRemoveUntil('/home', (route) => false);
     } else {
@@ -32,6 +40,8 @@ class _AdScreenState extends State<AdScreen> {
         Navigator.of(context)
             .pushNamedAndRemoveUntil('/home', (route) => false);
       } else {
+        _isLoading = false;
+        setState(() {});
         Timer(Duration(seconds: _generalAdModel.duration), () async {
           Navigator.of(context)
               .pushNamedAndRemoveUntil('/home', (route) => false);
@@ -42,15 +52,24 @@ class _AdScreenState extends State<AdScreen> {
 
   @override
   Widget build(BuildContext context) {
-    switch (this.image) {
-      case null:
-        return Scaffold(
-          backgroundColor: Colors.black,
-        );
-      default:
-        return Container(
-          child: Image.network(this.image),
-        );
+    if (_isLoading) {
+      return LoadingModel();
+    } else {
+      switch (_generalAdModel.link) {
+        case null:
+          return Scaffold(
+            backgroundColor: Colors.black,
+          );
+        default:
+          return Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: NetworkImage(_generalAdModel.link),
+                    fit: BoxFit.cover)),
+          );
+      }
     }
   }
 }
