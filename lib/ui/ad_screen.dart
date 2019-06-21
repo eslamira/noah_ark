@@ -22,12 +22,6 @@ class _AdScreenState extends State<AdScreen> {
 
   _initData() async {
     _generalAdModel = await DatabaseClient.internal().getGeneralAd();
-    print(_generalAdModel.duration);
-    print(_generalAdModel.link);
-    print(_generalAdModel.startDateTime);
-    print(_generalAdModel.endDateTime);
-    print(_generalAdModel.endDateTime.difference(DateTime.now()).isNegative);
-    print(DateTime.now().difference(_generalAdModel.startDateTime).isNegative);
     if (_generalAdModel == null) {
       Navigator.of(context).pushNamedAndRemoveUntil('/home', (route) => false);
     } else {
