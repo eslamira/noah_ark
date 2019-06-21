@@ -162,8 +162,8 @@ class DatabaseClient {
   }
 
   Future<GeneralAdModel> getGeneralAd() async {
-    return await _db.reference().child('generalAds/').once().then((d) {
-      //TODO : later
+    return await _db.reference().child('generalAd/').once().then((d) {
+      if (d.value != null) return GeneralAdModel.fromMap(d.value);
     });
   }
 }
