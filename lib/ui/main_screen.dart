@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:noah_ark/models/ad_model.dart';
 import 'package:noah_ark/models/user_model.dart';
 import 'package:noah_ark/ui/common/common.dart';
+import 'package:noah_ark/ui/common/pin_code.dart';
 import 'package:noah_ark/ui/widgets/ad_dialog.dart';
 import 'package:noah_ark/ui/widgets/noah_scaffold.dart';
+import 'package:noah_ark/utils/auth_client.dart';
 import 'package:noah_ark/utils/database_client.dart';
 import 'package:tiny_widgets/tiny_widgets.dart';
 
@@ -12,11 +14,26 @@ class MainScreen extends StatefulWidget {
   _MainScreenState createState() => _MainScreenState();
 }
 
-class _MainScreenState extends State<MainScreen> {
+class _MainScreenState extends State<MainScreen> with WidgetsBindingObserver {
   List<AdModel> _adList = List<AdModel>();
   UserModel _user;
   bool _isLoading = true;
   final _db = DatabaseClient.internal();
+
+  @override
+  Future didChangeAppLifecycleState(AppLifecycleState state) async {
+    if (state == AppLifecycleState.resumed &&
+        await AuthClient.internal().isLoggedIn() != null) {
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => PinCode(
+                onResume: true,
+              ),
+        ),
+      );
+    }
+    super.didChangeAppLifecycleState(state);
+  }
 
   @override
   void initState() {
