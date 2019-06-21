@@ -162,7 +162,7 @@ class DatabaseClient {
   }
 
   Future<GeneralAdModel> getGeneralAd() async {
-    return await _db.reference().child('ads/g/').once().then((d) {
+    return await _db.reference().child('generalAds/').once().then((d) {
       //TODO : later
     });
   }

@@ -19,13 +19,13 @@ class AdModel {
 
 class GeneralAdModel {
   String link;
-  Duration duration;
+  int duration;
   DateTime startDateTime;
   DateTime endDateTime;
 
   GeneralAdModel.fromMap(Map m) {
     link = m['link'];
-    duration = Duration(seconds: m['duration']);
+    duration = m['duration'];
     startDateTime = DateTime.fromMillisecondsSinceEpoch(m['startDateTime']);
     endDateTime = DateTime.fromMillisecondsSinceEpoch(m['endDateTime']);
   }
